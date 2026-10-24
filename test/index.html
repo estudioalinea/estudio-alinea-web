@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Test de presencia digital | Estudio Alinea</title>
+<meta name="description" content="¿Cómo ve tu empresa un cliente antes de llamarte? 5 preguntas, 1 minuto, sin costo. Para empresas técnicas, industriales y constructoras.">
+<link rel="canonical" href="https://estudioalinea.com.ar/test/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Test de presencia digital | Estudio Alinea">
+<meta property="og:description" content="¿Cómo ve tu empresa un cliente antes de llamarte? 5 preguntas, 1 minuto, sin costo.">
+<meta property="og:url" content="https://estudioalinea.com.ar/test/">
+<meta property="og:locale" content="es_AR">
+<meta name="theme-color" content="#2C3649">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,500;1,500&family=Comfortaa:wght@700&display=swap">
+<style>
+[hidden]{display:none!important}
+/* Test en una columna, pensado para el celular: una pregunta por pantalla, respuestas de un toque; resultado con medidor de semáforo y barras por área. Misma paleta fija que la landing. */
+:root{
+  --pizarra:#2C3649; --medianoche:#0F1E33; --cobalto:#2E4A67;
+  --bronce:#B8945B; --bronce-claro:#C9A56C; --bronce-texto:#7E6235;
+  --pergamino:#D8CEBE; --porcelana:#F4F0E8; --arena:#EFE9DF; --blanco:#FBF9F5;
+  --tinta:#0F1E33; --tinta-suave:#46526A; --linea:#DDD5C7; --linea-osc:rgba(216,206,190,.16);
+  --rojo:#B4533C; --amarillo:#D1A03C; --verde:#5B8A5E; --pista:#E4DCCF;
+  --error:#9B2C1F;
+  --f-sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-display:"EB Garamond",Georgia,"Times New Roman",serif;
+  --f-iso:"Comfortaa","Montserrat",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+html,body{min-height:100%}
+body{margin:0;background:var(--porcelana);color:var(--tinta);font-family:var(--f-sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--bronce);outline-offset:3px}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+.envoltura{width:100%;max-width:640px;margin:0 auto;padding-inline:16px}
+.etiqueta{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--bronce-texto)}
+
+/* Encabezado */
+.barra{background:var(--pizarra);border-bottom:1px solid var(--linea-osc)}
+.barra .envoltura{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.logo{display:inline-flex;align-items:baseline;gap:.28em;font-size:1.15rem;letter-spacing:-.02em;line-height:1;text-decoration:none;color:var(--pergamino)}
+.logo .l1{font-weight:300}.logo .l2{font-weight:700}
+.logo .a{font-family:var(--f-iso);font-weight:700;color:var(--bronce);font-size:1.04em;letter-spacing:0}
+.barra small{font-size:.66rem;font-weight:500;letter-spacing:.3em;color:var(--pergamino)}
+
+main{flex:1;padding-block:28px 56px}
+.pantalla{display:grid;gap:22px;animation:entrar .35s ease-out both}
+@keyframes entrar{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;font-weight:600;font-size:.95rem;text-decoration:none;padding:12px 24px;border-radius:2px;border:1px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s;width:100%}
+.btn-bronce{background:var(--bronce);color:var(--medianoche)}
+.btn-bronce:hover{background:var(--bronce-claro)}
+.btn-oscuro{background:var(--pizarra);color:var(--porcelana)}
+.btn-oscuro:hover{background:var(--medianoche)}
+.btn-linea{background:transparent;border-color:#CFC5B4;color:var(--tinta)}
+.btn-linea:hover{border-color:var(--cobalto)}
+.btn svg{width:20px;height:20px;flex:none;fill:currentColor}
+.volver{justify-self:start;background:none;border:0;padding:8px 0;font-size:.85rem;font-weight:500;color:var(--tinta-suave);cursor:pointer}
+.volver:hover{color:var(--tinta)}
+
+/* Portada del test */
+.intro{background:var(--pizarra);color:var(--porcelana);padding:28px 22px;display:grid;gap:16px;position:relative;overflow:hidden}
+.intro .etiqueta{color:var(--bronce)}
+.intro h1{font-family:var(--f-display);font-weight:500;font-size:clamp(2.1rem,8vw,2.9rem);line-height:1.04;letter-spacing:-.01em}
+.intro h1 em{color:var(--bronce)}
+.intro p{color:var(--pergamino);font-weight:300}
+.intro .circulos{position:absolute;right:20px;top:24px;width:66px;pointer-events:none}
+.datos-rapidos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--linea-osc)}
+.datos-rapidos li{padding:14px 8px 0 0;display:grid;gap:2px}
+.datos-rapidos li + li{padding-left:12px;border-left:1px solid var(--linea-osc)}
+.datos-rapidos b{font-family:var(--f-display);font-weight:500;font-size:1.6rem;line-height:1;color:var(--porcelana)}
+.datos-rapidos span{font-size:.74rem;color:var(--pergamino)}
+.para-quien{font-size:.9rem;color:var(--tinta-suave)}
+
+/* Preguntas */
+.progreso{display:grid;gap:8px}
+.progreso .fila{display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;color:var(--tinta-suave);letter-spacing:.04em}
+.progreso .pista{height:4px;background:var(--pista)}
+.progreso .relleno{height:100%;background:var(--bronce);transition:width .3s ease}
+.pregunta h2{font-family:var(--f-display);font-weight:500;font-size:clamp(1.65rem,6.4vw,2.1rem);line-height:1.15}
+.pregunta .area{margin-bottom:10px}
+.opciones{display:grid;gap:10px;margin:0;padding:0;border:0}
+.opcion{display:flex;align-items:center;gap:14px;text-align:left;width:100%;min-height:60px;padding:14px 16px;background:var(--blanco);border:1px solid #CFC5B4;border-radius:2px;cursor:pointer;font-size:.97rem;line-height:1.4;transition:border-color .15s,background .15s}
+.opcion::before{content:"";width:18px;height:18px;border-radius:50%;border:1.5px solid #B9AE9C;flex:none;transition:all .15s}
+.opcion:hover{border-color:var(--cobalto)}
+.opcion[aria-pressed="true"]{border-color:var(--cobalto);background:#EAF0F5}
+.opcion[aria-pressed="true"]::before{border:5px solid var(--cobalto)}
+.opcion.nose{background:transparent;border-style:dashed;color:var(--tinta-suave)}
+
+/* Resultado */
+.tarjeta{background:var(--blanco);border:1px solid var(--linea);padding:24px 20px;display:grid;gap:18px}
+.medidor{display:grid;justify-items:center;gap:6px;text-align:center}
+.medidor svg{width:100%;max-width:300px;height:auto;overflow:visible}
+.medidor .num{font-family:var(--f-display);font-weight:500;font-size:64px;fill:var(--tinta);font-variant-numeric:lining-nums tabular-nums}
+.medidor .de{font-family:var(--f-sans);font-size:15px;font-weight:500;fill:var(--tinta-suave)}
+.nivel{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:99px;color:var(--blanco)}
+.nivel.rojo{background:var(--rojo)}.nivel.amarillo{background:var(--amarillo);color:var(--medianoche)}.nivel.verde{background:var(--verde)}
+.medidor .frase{font-size:.98rem;color:var(--tinta-suave);max-width:36ch;margin-top:6px}
+.semaforo{display:flex;justify-content:center;gap:16px;font-size:.72rem;color:var(--tinta-suave)}
+.semaforo span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.semaforo i{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+.barras{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.barras li{display:grid;gap:6px}
+.barras .rotulo{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;font-weight:600}
+.barras .rotulo span:last-child{font-weight:500;color:var(--tinta-suave);font-variant-numeric:tabular-nums}
+.barras .pista{height:12px;background:var(--pista);border-radius:99px;overflow:hidden}
+.barras .relleno{height:100%;width:0;border-radius:99px;transition:width .9s cubic-bezier(.2,.7,.1,1)}
+.relleno.rojo{background:var(--rojo)}.relleno.amarillo{background:var(--amarillo)}.relleno.verde{background:var(--verde)}
+.titulo-bloque{font-family:var(--f-display);font-weight:500;font-size:1.5rem;line-height:1.15}
+
+/* Pedido de datos */
+.candado{background:var(--medianoche);color:var(--porcelana);padding:24px 20px;display:grid;gap:18px}
+.candado .etiqueta{color:var(--bronce)}
+.candado h2{font-family:var(--f-display);font-weight:500;font-size:1.75rem;line-height:1.12}
+.candado h2 em{color:var(--bronce)}
+.candado > p{color:var(--pergamino);font-size:.95rem;font-weight:300}
+.borroso{display:grid;gap:8px;filter:blur(5px);opacity:.55;user-select:none;pointer-events:none}
+.borroso div{height:12px;background:var(--pergamino);border-radius:2px}
+.campos{display:grid;gap:14px}
+.campo{display:grid;gap:6px}
+.campo label{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--pergamino)}
+.campo input,.campo select{width:100%;font:inherit;font-size:16px;color:var(--tinta);background:var(--blanco);border:1px solid #CFC5B4;border-radius:2px;padding:12px 14px;min-height:50px}
+.campo input:focus,.campo select:focus{border-color:var(--bronce);outline:2px solid rgba(184,148,91,.35);outline-offset:0}
+.campo [aria-invalid="true"]{border-color:#E08A78;outline:2px solid rgba(224,138,120,.35)}
+.campo .err{font-size:.78rem;color:#F0A898;font-weight:500}
+.consentimiento{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;font-size:.8rem;color:var(--pergamino);align-items:start;cursor:pointer}
+.consentimiento input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--bronce)}
+.nota{font-size:.78rem;color:var(--pergamino);opacity:.85}
+
+/* Hallazgos */
+.hallazgos{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:h}
+.hallazgo{background:var(--blanco);border:1px solid var(--linea);border-left:4px solid var(--rojo);padding:18px 18px 20px;display:grid;gap:12px}
+.hallazgo.amarillo{border-left-color:var(--amarillo)}.hallazgo.verde{border-left-color:var(--verde)}
+.hallazgo h3{font-size:1rem;font-weight:700;display:flex;gap:10px;align-items:baseline}
+.hallazgo h3::before{counter-increment:h;content:counter(h);font-family:var(--f-display);font-size:1.5rem;font-weight:500;color:var(--bronce-texto);line-height:1}
+.hallazgo dl{margin:0;display:grid;gap:10px}
+.hallazgo dt{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bronce-texto)}
+.hallazgo dd{margin:2px 0 0;font-size:.95rem;color:var(--tinta-suave)}
+.hallazgo .resuelve{background:var(--arena);padding:12px 14px;border-radius:2px}
+.hallazgo .resuelve dd{color:var(--tinta)}
+.aviso-wa{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:center;background:var(--pizarra);color:var(--porcelana);padding:16px 18px;font-size:.92rem}
+.aviso-wa .iso{width:40px;height:40px;border-radius:50%;background:var(--cobalto);display:grid;place-items:center;font-family:var(--f-iso);font-weight:700;color:var(--bronce);font-size:24px;line-height:1;padding-bottom:4px}
+.aviso-wa b{color:var(--bronce);font-weight:600}
+.acciones{display:grid;gap:10px}
+.seguir{text-align:center;font-size:.88rem;color:var(--tinta-suave)}
+.seguir a{color:var(--bronce-texto);font-weight:600}
+
+/* Pie */
+.pie{background:var(--medianoche);color:var(--pergamino);font-size:.8rem}
+.pie .envoltura{padding-block:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.pie a{text-decoration:none}.pie a:hover{color:var(--bronce)}
+
+/* Solo para el PDF */
+.solo-pdf{display:none}
+/* Modo PDF: mismo armado que la impresión, para generar el archivo descargable */
+body.modo-pdf #app{width:720px;max-width:none;padding:28px 32px;background:#fff}
+body.modo-pdf .no-pdf,body.modo-pdf .volver{display:none!important}
+body.modo-pdf .solo-pdf{display:block}
+body.modo-pdf .pantalla{gap:14px;animation:none}
+body.modo-pdf .pdf-cabeza{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--bronce);padding-bottom:8px;margin-bottom:6px}
+body.modo-pdf .pdf-cabeza .logo{color:var(--tinta);font-size:1.3rem}
+body.modo-pdf .pdf-cabeza p{font-size:.78rem;color:var(--tinta-suave);text-align:right}
+body.modo-pdf .medidor svg{max-width:240px}
+body.modo-pdf .hallazgo{break-inside:avoid}
+body.modo-pdf .titulo-hallazgos{break-before:page;padding-top:4px}
+body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var(--linea);font-size:.75rem;color:var(--tinta-suave)}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:11pt;display:block}
+  .barra,.pie,.no-pdf,.volver{display:none!important}
+  main{padding:0}
+  .envoltura{max-width:none;padding:0}
+  .solo-pdf{display:block}
+  .pdf-cabeza{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--bronce);padding-bottom:8px;margin-bottom:14px}
+  .pdf-cabeza .logo{color:var(--tinta);font-size:15pt}
+  .pdf-cabeza p{font-size:9pt;color:var(--tinta-suave);text-align:right}
+  .pantalla{gap:12px;animation:none}
+  .tarjeta{border:1px solid var(--linea);padding:14px;break-inside:avoid}
+  .medidor svg{max-width:220px}
+  .hallazgo{break-inside:avoid;padding:12px 14px}
+  .barras .relleno{transition:none}
+  .pdf-pie{margin-top:14px;padding-top:10px;border-top:1px solid var(--linea);font-size:9pt;color:var(--tinta-suave)}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<header class="barra">
+  <div class="envoltura">
+    <a class="logo" href="../" aria-label="Estudio Alinea, ir al sitio"><span class="l1">estudio</span><span class="l2"><span class="a">a</span>linea</span></a>
+    <small>MARKETING TÉCNICO</small>
+  </div>
+</header>
+
+<main>
+  <div class="envoltura" id="app" aria-live="polite"></div>
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <span>Mendoza · Argentina · © 2026 Estudio Alinea</span>
+    <span><a href="../">estudioalinea.com.ar</a> · <a href="https://www.instagram.com/estudioalinea.digital/" target="_blank" rel="noopener">Instagram</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Dirección del Google Apps Script que guarda cada test en la planilla.
+  // Vacía = el test funciona igual, pero no guarda los datos.
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbyT4c9wD50kN4VL7G0KkWGAsT3lAPQG7fOL1qIYRDcGrMaY8CZ4HNUctLHWdEraiGZz/exec";
+  var WA_ALINEA = "5492617165352";
+
+  var PREGUNTAS = [
+    { area: "Google y Maps", corto: "Google Maps",
+      texto: "Si alguien busca lo que hacés en Google Maps, ¿encuentra a tu empresa?",
+      opciones: [
+        ["No aparecemos", 0],
+        ["Aparecemos, pero con pocas reseñas o datos viejos", 1],
+        ["Aparecemos con datos al día y algunas reseñas", 2],
+        ["Aparecemos completos: fotos, reseñas y las respondemos", 3],
+        ["No sé, nunca lo revisé", 0, true]
+      ] },
+    { area: "Lo que se ve", corto: "Web",
+      texto: "Lo que se ve de tu empresa en internet, ¿muestra tu trabajo más fuerte?",
+      opciones: [
+        ["No tenemos web ni nada que muestre lo que hacemos", 0],
+        ["Hay algo, pero no muestra lo que más nos interesa vender", 1],
+        ["Tenemos web, pero está desactualizada", 2],
+        ["Sí: web al día con trabajos, obras y certificaciones", 3],
+        ["No sé qué aparece si nos buscan", 0, true]
+      ] },
+    { area: "Presentación", corto: "Presentación",
+      texto: "Si un cliente grande te pide una presentación de la empresa, ¿qué le mandás?",
+      opciones: [
+        ["Nada armado: se lo explico por teléfono", 0],
+        ["Fotos sueltas por WhatsApp", 1],
+        ["Un PDF o folleto, pero viejo", 2],
+        ["Una presentación al día con obras, equipos y certificaciones", 3]
+      ] },
+    { area: "Redes y LinkedIn", corto: "Redes",
+      texto: "¿Tu empresa publica en LinkedIn o Instagram?",
+      opciones: [
+        ["No tenemos cuentas", 0],
+        ["Tenemos, pero están quietas", 1],
+        ["Publicamos cada tanto, cuando hay tiempo", 2],
+        ["Publicamos seguido, con trabajos reales", 3]
+      ] },
+    { area: "Consultas", corto: "Consultas",
+      texto: "Cuando te escriben fuera de horario, ¿qué pasa con esa consulta?",
+      opciones: [
+        ["Se pierde, o la veo días después", 0],
+        ["La respondo yo de noche, cuando puedo", 1],
+        ["Alguien la responde al otro día", 2],
+        ["Tiene respuesta automática y queda registrada para seguirla", 3]
+      ] }
+  ];
+
+  // Para cada área: [qué pasa, qué te cuesta, cómo se resuelve], según la respuesta (0, 1, 2) o "nose".
+  var HALLAZGOS = [
+    { // Google
+      0: ["Quien busca tu rubro en Google Maps no encuentra a tu empresa.",
+          "La consulta se la lleva la empresa que aparece primero, aunque no haga lo que vos hacés.",
+          "Creamos y ponemos al día tu ficha de Google: datos, fotos, servicios y zona de trabajo. Vos solo nos pasás fotos y datos."],
+      1: ["Aparecés en Maps, pero con pocas reseñas o datos viejos.",
+          "Al lado de una ficha completa, la tuya transmite menos confianza de la que tu trabajo merece.",
+          "Actualizamos tu ficha y armamos un pedido de reseñas simple para mandarle a tus clientes conformes."],
+      2: ["Tu ficha está al día, pero le falta para destacarse.",
+          "Con pocas fotos o reseñas sin responder, quedás a la par de la competencia en vez de adelante.",
+          "Completamos fotos y servicios, y te dejamos respuestas listas para cada reseña."],
+      nose: ["No sabés cómo aparece tu empresa en Google Maps.",
+          "Puede haber un teléfono viejo, una ficha duplicada o reseñas sin responder sin que te enteres.",
+          "Te la revisamos sin costo y te decimos qué hay que corregir."]
+    },
+    { // Web
+      0: ["No hay nada en internet que muestre lo que hace tu empresa.",
+          "Una empresa grande que te busca no ve de qué sos capaz y sigue de largo.",
+          "Armamos tu web con tus trabajos, obras y certificaciones. Vos nos pasás fotos y datos; del resto nos encargamos."],
+      1: ["Lo que se ve de tu empresa no muestra tu trabajo más fuerte.",
+          "Quien te busca se queda con una idea más chica de lo que realmente hacés.",
+          "Ordenamos lo que se ve para que tu trabajo principal sea lo primero que aparece."],
+      2: ["Tenés web, pero está desactualizada.",
+          "Una web vieja hace pensar que la empresa también lo está, y tus mejores trabajos recientes no aparecen.",
+          "La actualizamos con lo último que hiciste y la dejamos fácil de mantener."],
+      nose: ["No sabés qué encuentra un cliente cuando busca tu empresa.",
+          "Puede aparecer algo viejo, incompleto o de otra empresa con un nombre parecido.",
+          "Lo revisamos sin costo y te mostramos qué ve hoy un cliente."]
+    },
+    { // Presentación
+      0: ["Cuando un cliente grande te pide una presentación, no tenés algo armado para mandar.",
+          "Explicás todo de nuevo cada vez, y lo que le llega no muestra tu capacidad real.",
+          "Armamos tu presentación de capacidades: obras, equipos, certificaciones y clientes, lista para mandar por mail o WhatsApp."],
+      1: ["Tu presentación son fotos sueltas por WhatsApp.",
+          "Las fotos se pierden en el chat y no cuentan quién sos, qué hacés ni con qué respaldo.",
+          "Convertimos esas fotos en una presentación ordenada en PDF, con tu marca."],
+      2: ["Tenés una presentación, pero está vieja.",
+          "Lo último que hiciste, que suele ser lo mejor, no está.",
+          "La actualizamos con tus trabajos recientes y te la dejamos lista para mandar."]
+    },
+    { // Redes
+      0: ["Tu empresa no tiene redes.",
+          "Quien quiere ver trabajos tuyos antes de llamarte no tiene dónde mirarlos.",
+          "Creamos las cuentas y publicamos por vos con trabajos reales. Vos nos mandás fotos desde la obra."],
+      1: ["Tus redes existen, pero están quietas.",
+          "Una cuenta sin publicaciones recientes hace dudar de si la empresa sigue activa.",
+          "Publicamos por vos con trabajos reales: vos nos mandás fotos, nosotros escribimos y publicamos."],
+      2: ["Publicás cuando hay tiempo, y casi nunca hay.",
+          "Las redes se cortan y se pierde la continuidad que genera confianza.",
+          "Te armamos un calendario y nos ocupamos de publicar todas las semanas."]
+    },
+    { // Consultas
+      0: ["Las consultas que llegan fuera de horario se pierden o se ven tarde.",
+          "El que escribe y no recibe respuesta le escribe a otro.",
+          "Configuramos una respuesta automática y un registro de consultas para que ninguna quede sin seguimiento."],
+      1: ["Las consultas de la noche las respondés vos, cuando podés.",
+          "Tu descanso se va en responder, y si un día no llegás, la consulta se enfría.",
+          "Configuramos una respuesta automática al instante y un registro para seguir cada consulta al otro día."],
+      2: ["Las consultas se responden recién al otro día.",
+          "Mientras tanto, el cliente pudo haber pedido presupuesto a otro.",
+          "Sumamos una respuesta automática al instante, para que nadie quede esperando."]
+    }
+  ];
+
+  var CARGOS = ["Dueño o socio", "Gerencia", "Compras", "Comercial o marketing", "Otro"];
+  var RUBROS = ["Minería", "Petróleo y gas", "Energía e instalaciones", "Industria y metalmecánica", "Servicios técnicos", "Construcción", "Otro"];
+
+  var app = document.getElementById("app");
+  var params = new URLSearchParams(location.search);
+  var origen = params.get("origen") || params.get("utm_source") || "web";
+  var estado = { paso: -1, respuestas: [], datos: null };
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function color(v) { return v <= 40 ? "rojo" : v <= 70 ? "amarillo" : "verde"; }
+  function nivel(v) { return v <= 40 ? "Por arrancar" : v <= 70 ? "En marcha" : "Sólida"; }
+  function puntosArea(i) { return PREGUNTAS[i].opciones[estado.respuestas[i]][1]; }
+  function esNoSe(i) { return !!PREGUNTAS[i].opciones[estado.respuestas[i]][2]; }
+  function valorArea(i) { return Math.round(puntosArea(i) / 3 * 100); }
+  function puntaje() {
+    var t = 0; for (var i = 0; i < PREGUNTAS.length; i++) t += puntosArea(i);
+    return Math.round(t / (PREGUNTAS.length * 3) * 100);
+  }
+  // Las 3 áreas más flojas (en empate, primero las de "no sé").
+  function flojas() {
+    return PREGUNTAS.map(function (_, i) { return i; })
+      .sort(function (a, b) { return (puntosArea(a) - puntosArea(b)) || ((esNoSe(b) ? 1 : 0) - (esNoSe(a) ? 1 : 0)) || (a - b); })
+      .slice(0, 3);
+  }
+  function hallazgo(i) {
+    var p = puntosArea(i);
+    if (esNoSe(i) && HALLAZGOS[i].nose) return HALLAZGOS[i].nose;
+    if (p >= 3) return null;
+    return HALLAZGOS[i][p];
+  }
+  function frase(v) {
+    if (v <= 40) return "Hoy, un cliente que te busca ve mucho menos de lo que tu empresa sabe hacer.";
+    if (v <= 70) return "Tenés una base, pero hay puntos donde se te escapan clientes que te buscan.";
+    return "Tu empresa se ve bien. Quedan detalles para sacarle más provecho.";
+  }
+
+  function mostrar(html) {
+    app.innerHTML = html;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Portada ---------- */
+  function portada() {
+    mostrar(
+      '<section class="pantalla">' +
+        '<div class="intro">' +
+          '<svg class="circulos" viewBox="0 0 150 62" aria-hidden="true"><line x1="0" y1="60" x2="150" y2="60" stroke="#B8945B" stroke-width="2"/><circle cx="25" cy="34" r="24" fill="#0F1E33"/><circle cx="75" cy="34" r="24" fill="#2E4A67"/><circle cx="125" cy="34" r="24" fill="#B8945B"/></svg>' +
+          '<p class="etiqueta">Test de presencia digital</p>' +
+          '<h1>¿Cómo ve tu empresa un cliente <em>antes de llamarte?</em></h1>' +
+          '<p>Respondé 5 preguntas y mirá al instante tu puntaje, qué te está frenando y cómo se resuelve.</p>' +
+          '<ul class="datos-rapidos"><li><b>5</b><span>preguntas</span></li><li><b>1</b><span>minuto</span></li><li><b>$0</b><span>sin costo</span></li></ul>' +
+        '</div>' +
+        '<button class="btn btn-bronce" id="empezar">Empezar el test</button>' +
+        '<p class="para-quien">Para empresas técnicas, industriales y constructoras. Lo puede hacer el dueño, un socio, la gerencia o quien lleve la parte comercial. Se responde de memoria, sin buscar nada.</p>' +
+      '</section>'
+    );
+    document.getElementById("empezar").onclick = function () { estado.paso = 0; pregunta(); };
+  }
+
+  /* ---------- Preguntas ---------- */
+  function pregunta() {
+    var i = estado.paso, q = PREGUNTAS[i], total = PREGUNTAS.length;
+    var ops = q.opciones.map(function (o, k) {
+      return '<button type="button" class="opcion' + (o[2] ? ' nose' : '') + '" data-k="' + k + '" aria-pressed="' + (estado.respuestas[i] === k) + '">' + esc(o[0]) + '</button>';
+    }).join("");
+    mostrar(
+      '<section class="pantalla pregunta">' +
+        '<div class="progreso"><div class="fila"><span>Pregunta ' + (i + 1) + ' de ' + total + '</span><span>' + esc(q.area) + '</span></div>' +
+        '<div class="pista"><div class="relleno" style="width:' + (i / total * 100) + '%"></div></div></div>' +
+        '<h2>' + esc(q.texto) + '</h2>' +
+        '<div class="opciones" role="group" aria-label="Respuestas">' + ops + '</div>' +
+        '<button class="volver" id="volver">← ' + (i === 0 ? 'Volver al inicio' : 'Pregunta anterior') + '</button>' +
+      '</section>'
+    );
+    requestAnimationFrame(function () { var r = app.querySelector(".progreso .relleno"); if (r) r.style.width = ((i + 1) / total * 100) + "%"; });
+    app.querySelectorAll(".opcion").forEach(function (b) {
+      b.onclick = function () {
+        estado.respuestas[i] = +b.dataset.k;
+        app.querySelectorAll(".opcion").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+        setTimeout(function () {
+          if (i < total - 1) { estado.paso++; pregunta(); } else { resultado(); }
+        }, 220);
+      };
+    });
+    document.getElementById("volver").onclick = function () {
+      if (i === 0) { estado.paso = -1; portada(); } else { estado.paso--; pregunta(); }
+    };
+  }
+
+  /* ---------- Medidor y barras ---------- */
+  function medidorSVG(v) {
+    // Semicírculo de 180°: pista en tres tramos de semáforo + arco del puntaje.
+    var R = 110, cx = 140, cy = 140, L = Math.PI * R;
+    function arco() { return "M" + (cx - R) + " " + cy + " A" + R + " " + R + " 0 0 1 " + (cx + R) + " " + cy; }
+    var tramo = function (desde, hasta, col) {
+      return '<path d="' + arco() + '" fill="none" stroke="' + col + '" stroke-width="10" stroke-dasharray="0 ' + (L * desde) + ' ' + (L * (hasta - desde)) + ' ' + L + '" opacity=".28"/>';
+    };
+    // Colores escritos en el SVG (no variables CSS) para que también salgan en el PDF.
+    var col = { rojo: "#B4533C", amarillo: "#D1A03C", verde: "#5B8A5E" }[color(v)];
+    return '<svg viewBox="0 0 280 160" role="img" aria-label="Puntaje ' + v + ' de 100, nivel ' + nivel(v) + '">' +
+      tramo(0, .405, "#B4533C") + tramo(.415, .705, "#D1A03C") + tramo(.715, 1, "#5B8A5E") +
+      '<path class="arco-valor" d="' + arco() + '" fill="none" stroke="' + col + '" stroke-width="18" stroke-linecap="round" stroke-dasharray="' + L + '" stroke-dashoffset="' + L + '" style="transition:stroke-dashoffset 1.1s cubic-bezier(.2,.7,.1,1)" data-final="' + (L * (1 - Math.max(v, 2) / 100)) + '"/>' +
+      '<text class="num" x="140" y="128" text-anchor="middle" fill="#0F1E33" font-family="EB Garamond, Georgia, serif" font-size="64" font-weight="500">' + v + '</text>' +
+      '<text class="de" x="140" y="152" text-anchor="middle" fill="#46526A" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="500">de 100</text>' +
+      '</svg>';
+  }
+  function barrasHTML() {
+    return '<ul class="barras">' + PREGUNTAS.map(function (q, i) {
+      var v = valorArea(i), etiqueta = esNoSe(i) ? "No sé" : v + "%";
+      return '<li><div class="rotulo"><span>' + esc(q.area) + '</span><span>' + etiqueta + '</span></div>' +
+        '<div class="pista"><div class="relleno ' + color(v) + '" data-w="' + Math.max(v, 3) + '"></div></div></li>';
+    }).join("") + '</ul>';
+  }
+  function tarjetaPuntaje() {
+    var v = puntaje(), c = color(v);
+    return '<div class="tarjeta">' +
+      '<div class="medidor">' + medidorSVG(v) +
+        '<span class="nivel ' + c + '">' + nivel(v) + '</span>' +
+        '<p class="frase">' + frase(v) + '</p>' +
+      '</div>' +
+      '<div class="semaforo" aria-hidden="true"><span><i style="background:var(--rojo)"></i>Por arrancar</span><span><i style="background:var(--amarillo)"></i>En marcha</span><span><i style="background:var(--verde)"></i>Sólida</span></div>' +
+      '<h2 class="titulo-bloque">Tu puntaje por área</h2>' + barrasHTML() +
+    '</div>';
+  }
+  function animar() {
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      var a = app.querySelector(".arco-valor"); if (a) a.style.strokeDashoffset = a.dataset.final;
+      app.querySelectorAll(".barras .relleno").forEach(function (b) { b.style.width = b.dataset.w + "%"; });
+    }); });
+  }
+
+  /* ---------- Resultado con pedido de datos ---------- */
+  function resultado() {
+    var opcCargo = CARGOS.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("");
+    var opcRubro = RUBROS.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("");
+    mostrar(
+      '<section class="pantalla">' +
+        '<div><p class="etiqueta">Tu resultado</p><h1 class="titulo-bloque" style="font-size:2rem;margin-top:6px">Tu carta de presentación digital</h1></div>' +
+        tarjetaPuntaje() +
+        '<form class="candado" id="form" novalidate>' +
+          '<p class="etiqueta">Tus 3 puntos más flojos</p>' +
+          '<h2>Mirá qué te está frenando <em>y cómo se resuelve</em></h2>' +
+          '<div class="borroso" aria-hidden="true"><div style="width:90%"></div><div style="width:70%"></div><div style="width:82%"></div></div>' +
+          '<p>Dejanos tus datos para ver tu resultado completo. Desde Estudio Alinea te enviamos tu informe por WhatsApp.</p>' +
+          '<div class="campos">' +
+            campo("nombre", "Tu nombre", '<input id="nombre" name="nombre" autocomplete="given-name" required>') +
+            campo("cargo", "Tu cargo", '<select id="cargo" name="cargo" required><option value="">Elegí una opción</option>' + opcCargo + '</select>') +
+            campo("empresa", "Empresa", '<input id="empresa" name="empresa" autocomplete="organization" required>') +
+            campo("rubro", "Rubro", '<select id="rubro" name="rubro" required><option value="">Elegí una opción</option>' + opcRubro + '</select>') +
+            campo("whatsapp", "WhatsApp (con característica)", '<input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 261 555 1234" required>') +
+          '</div>' +
+          '<label class="consentimiento"><input type="checkbox" id="acepto" required><span>Acepto que Estudio Alinea guarde estos datos para mandarme mi resultado y contactarme por WhatsApp. No se comparten con nadie y podés pedir que los borremos cuando quieras.</span></label>' +
+          '<p class="err" id="err-acepto" hidden style="font-size:.78rem;color:#F0A898;font-weight:500">Marcá la casilla para continuar.</p>' +
+          '<button class="btn btn-bronce" type="submit">Ver mi resultado completo</button>' +
+          '<p class="nota">Sin costo y sin compromiso.</p>' +
+        '</form>' +
+        '<button class="volver" id="rehacer">← Cambiar mis respuestas</button>' +
+      '</section>'
+    );
+    animar();
+    document.getElementById("rehacer").onclick = function () { estado.paso = 0; pregunta(); };
+    document.getElementById("form").onsubmit = enviar;
+  }
+  function campo(id, label, control) {
+    return '<div class="campo"><label for="' + id + '">' + label + '</label>' + control + '<span class="err" id="err-' + id + '" hidden></span></div>';
+  }
+
+  function normalizarWA(raw) {
+    var d = String(raw).replace(/\D/g, "");
+    if (d.indexOf("00") === 0) d = d.slice(2);
+    if (d.indexOf("54") === 0) d = d.slice(2);
+    if (d.indexOf("9") === 0 && d.length === 11) d = d.slice(1);
+    if (d.indexOf("0") === 0) d = d.slice(1);
+    // Saca el "15" después de la característica (2, 3 o 4 dígitos) si sobra.
+    if (d.length === 12) {
+      for (var n = 2; n <= 4; n++) { if (d.substr(n, 2) === "15") { d = d.slice(0, n) + d.slice(n + 2); break; } }
+    }
+    return d.length === 10 ? "549" + d : "";
+  }
+
+  function enviar(e) {
+    e.preventDefault();
+    var f = e.target, ok = true;
+    ["nombre", "cargo", "empresa", "rubro", "whatsapp"].forEach(function (id) {
+      var el = f.elements[id], msg = "";
+      if (!el.value.trim()) msg = "Completá este dato.";
+      else if (id === "whatsapp" && !normalizarWA(el.value)) msg = "Revisá el número: característica + número, sin 0 ni 15.";
+      var err = document.getElementById("err-" + id);
+      err.hidden = !msg; err.textContent = msg;
+      el.setAttribute("aria-invalid", msg ? "true" : "false");
+      if (msg && ok) { el.focus(); ok = false; }
+    });
+    var acepto = document.getElementById("acepto");
+    document.getElementById("err-acepto").hidden = acepto.checked;
+    if (!acepto.checked) ok = false;
+    if (!ok) return;
+
+    estado.datos = {
+      nombre: f.elements.nombre.value.trim(),
+      cargo: f.elements.cargo.value,
+      empresa: f.elements.empresa.value.trim(),
+      rubro: f.elements.rubro.value,
+      whatsapp: f.elements.whatsapp.value.trim(),
+      wa: normalizarWA(f.elements.whatsapp.value)
+    };
+    guardar();
+    completo();
+  }
+
+  // Mensaje armado para que Pamela le escriba a la persona (va a la planilla).
+  function mensajeParaLead() {
+    var d = estado.datos, v = puntaje(), h = hallazgo(flojas()[0]);
+    var nombre = d.nombre.split(" ")[0];
+    var punto = h ? h[0].charAt(0).toLowerCase() + h[0].slice(1).replace(/\.$/, "") : "";
+    return "Hola " + nombre + ", ¿cómo estás? Pamela te habla, de Estudio Alinea. " +
+      "Gracias por hacer el Test de presencia digital: " + d.empresa + " sacó " + v + "/100. " +
+      (punto ? "Lo que más te está frenando hoy: " + punto + ". " : "") +
+      "Eso tiene solución y nos podemos encargar nosotros. Te mando tu informe completo. ¿Te parece si te llamo un ratito esta semana y te cuento cómo lo resolveríamos? Saludos!";
+  }
+
+  function guardar() {
+    if (!ENDPOINT) return;
+    var d = estado.datos, v = puntaje();
+    var fila = {
+      nombre: d.nombre, cargo: d.cargo, empresa: d.empresa, rubro: d.rubro,
+      whatsapp: d.whatsapp, wa: d.wa, puntaje: v, nivel: nivel(v),
+      flojos: flojas().map(function (i) { return PREGUNTAS[i].corto; }).join(", "),
+      mensaje: mensajeParaLead(), origen: origen
+    };
+    PREGUNTAS.forEach(function (q, i) { fila["p" + (i + 1)] = q.opciones[estado.respuestas[i]][0]; });
+    var body = new URLSearchParams(fila);
+    try {
+      if (navigator.sendBeacon) navigator.sendBeacon(ENDPOINT, body);
+      else fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body, keepalive: true });
+    } catch (err) { /* el test sigue aunque falle el guardado */ }
+  }
+
+  /* ---------- Resultado completo ---------- */
+  function completo() {
+    var d = estado.datos, v = puntaje(), idx = flojas();
+    var items = idx.map(function (i) {
+      var h = hallazgo(i);
+      if (!h) return '<li class="hallazgo verde"><h3>' + esc(PREGUNTAS[i].area) + '</h3><dl><div><dt>Lo que pasa</dt><dd>Esto lo tenés bien resuelto. Lo cuidamos para que siga así.</dd></div></dl></li>';
+      return '<li class="hallazgo ' + (esNoSe(i) ? "amarillo" : color(valorArea(i))) + '"><h3>' + esc(PREGUNTAS[i].area) + '</h3><dl>' +
+        '<div><dt>Lo que pasa</dt><dd>' + esc(h[0]) + '</dd></div>' +
+        '<div><dt>Lo que te cuesta</dt><dd>' + esc(h[1]) + '</dd></div>' +
+        '<div class="resuelve"><dt>Cómo se resuelve</dt><dd>' + esc(h[2]) + '</dd></div>' +
+      '</dl></li>';
+    }).join("");
+    var hayNoSe = estado.respuestas.some(function (_, i) { return esNoSe(i); });
+    var nombres = idx.map(function (i) { return PREGUNTAS[i].corto; }).join(", ");
+    var msg = "Hola, soy " + d.nombre + " (" + d.cargo + ") de " + d.empresa + ". Hice el Test de presencia digital y me dio " + v + "/100. Me interesa que me ayuden con: " + nombres + ".";
+    var fecha = new Date().toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" });
+    var nombreCorto = esc(d.nombre.split(" ")[0]);
+    mostrar(
+      '<section class="pantalla">' +
+        '<div class="solo-pdf"><div class="pdf-cabeza"><span class="logo"><span class="l1">estudio</span><span class="l2"><span class="a">a</span>linea</span></span>' +
+          '<p><b>Test de presencia digital</b><br>' + esc(d.empresa) + ' · ' + esc(fecha) + '</p></div></div>' +
+        '<div><p class="etiqueta">Resultado de ' + esc(d.empresa) + '</p><h1 class="titulo-bloque" style="font-size:2rem;margin-top:6px">' + nombreCorto + ', esta es tu carta de presentación digital</h1></div>' +
+        tarjetaPuntaje() +
+        '<h2 class="titulo-bloque titulo-hallazgos">Lo que te está frenando y cómo se resuelve</h2>' +
+        '<ol class="hallazgos">' + items + '</ol>' +
+        '<div class="aviso-wa no-pdf"><span class="iso" aria-hidden="true">a</span><p><b>Desde Estudio Alinea te vamos a escribir por WhatsApp</b> con tu informe completo. Si preferís avanzar ahora, escribinos.</p></div>' +
+        '<div class="acciones no-pdf">' +
+          '<a class="btn btn-bronce" href="https://wa.me/' + WA_ALINEA + '?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>' +
+            'Quiero que me lo resuelvan</a>' +
+          '<button class="btn btn-linea" id="pdf">Descargar mi resultado en PDF</button>' +
+          (hayNoSe ? '<a class="btn btn-linea" href="../#diagnostico">Pedir la revisión sin costo</a>' : '') +
+        '</div>' +
+        '<p class="seguir no-pdf">Mientras tanto, seguinos en <a href="https://www.instagram.com/estudioalinea.digital/" target="_blank" rel="noopener">Instagram</a>: mostramos cómo resolvemos estos puntos con empresas como la tuya.</p>' +
+        '<div class="solo-pdf pdf-pie">Estudio Alinea · Marketing técnico para empresas técnicas e industriales · Mendoza, Argentina<br>WhatsApp +54 9 261 716-5352 · contacto@estudioalinea.com.ar · estudioalinea.com.ar</div>' +
+      '</section>'
+    );
+    animar();
+    document.getElementById("pdf").onclick = function () {
+      var boton = this, texto = boton.textContent;
+      // Las barras y el medidor tienen que estar completos antes de generar el PDF.
+      app.querySelectorAll(".barras .relleno").forEach(function (b) { b.style.transition = "none"; b.style.width = b.dataset.w + "%"; });
+      var a = app.querySelector(".arco-valor"); if (a) { a.style.transition = "none"; a.style.strokeDashoffset = a.dataset.final; }
+      var archivo = "Test de presencia digital - " + d.empresa.replace(/[\\/:*?"<>|]/g, "") + ".pdf";
+      boton.disabled = true; boton.textContent = "Generando el PDF…";
+      cargarHtml2pdf(function (ok) {
+        if (!ok) { boton.disabled = false; boton.textContent = texto; window.print(); return; }
+        document.body.classList.add("modo-pdf");
+        window.scrollTo(0, 0);
+        var svg = app.querySelector(".medidor svg"), img = document.createElement("img");
+        img.src = medidorPNG(puntaje()); img.alt = ""; img.style.width = "240px";
+        svg.style.display = "none"; svg.parentNode.insertBefore(img, svg);
+        window.html2pdf().set({
+          margin: [8, 8, 8, 8], filename: archivo,
+          image: { type: "jpeg", quality: 0.95 },
+          html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", windowWidth: 800 },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"], before: ".titulo-hallazgos", avoid: [".hallazgo", ".tarjeta"] }
+        }).from(app).save().then(fin, fin);
+        function fin() { img.remove(); svg.style.display = ""; document.body.classList.remove("modo-pdf"); boton.disabled = false; boton.textContent = texto; }
+      });
+    };
+  }
+
+  // El PDF no dibuja bien el SVG del medidor: para el PDF se dibuja el mismo medidor en un canvas.
+  function medidorPNG(v) {
+    var c = document.createElement("canvas"); c.width = 560; c.height = 320;
+    var g = c.getContext("2d"), cx = 280, cy = 280, R = 220;
+    var col = { rojo: "#B4533C", amarillo: "#D1A03C", verde: "#5B8A5E" };
+    [[0, .405, col.rojo], [.415, .705, col.amarillo], [.715, 1, col.verde]].forEach(function (t) {
+      g.beginPath(); g.globalAlpha = .28; g.strokeStyle = t[2]; g.lineWidth = 20; g.lineCap = "butt";
+      g.arc(cx, cy, R, Math.PI * (1 + t[0]), Math.PI * (1 + t[1])); g.stroke();
+    });
+    g.globalAlpha = 1; g.beginPath(); g.strokeStyle = col[color(v)]; g.lineWidth = 36; g.lineCap = "round";
+    g.arc(cx, cy, R, Math.PI, Math.PI * (1 + Math.max(v, 2) / 100)); g.stroke();
+    g.textAlign = "center"; g.fillStyle = "#0F1E33"; g.font = '500 128px "EB Garamond", Georgia, serif';
+    g.fillText(String(v), cx, 256);
+    g.fillStyle = "#46526A"; g.font = '500 30px Montserrat, Arial, sans-serif';
+    g.fillText("de 100", cx, 304);
+    return c.toDataURL("image/png");
+  }
+
+  // Carga la librería del PDF solo cuando alguien la pide (no pesa en la carga del test).
+  function cargarHtml2pdf(listo) {
+    if (window.html2pdf) return listo(true);
+    var sc = document.createElement("script");
+    sc.src = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
+    sc.onload = function () { listo(!!window.html2pdf); };
+    sc.onerror = function () { listo(false); };
+    document.head.appendChild(sc);
+  }
+
+  portada();
+})();
+</script>
+</body>
+</html>

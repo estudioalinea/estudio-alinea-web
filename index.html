@@ -230,6 +230,14 @@ p{margin:0}
 .pie-inferior b{font-weight:600;color:var(--porcelana);user-select:all;overflow-wrap:anywhere}
 .pie-etq{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--bronce);margin-right:8px}
 
+/* Atajo al test de presencia digital */
+.atajo-test{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:.92rem;font-weight:500;color:var(--pergamino);text-decoration:none;border-bottom:1px solid rgba(184,148,91,.55);padding-bottom:4px}
+.atajo-test b{color:var(--bronce);font-weight:600}
+.atajo-test:hover{color:var(--porcelana);border-color:var(--bronce)}
+.test-caja{margin-top:28px;padding:18px 20px;border:1px solid rgba(184,148,91,.45);display:grid;gap:10px}
+.test-caja p{color:var(--pergamino);font-size:.92rem;font-weight:300}
+.test-caja .btn{justify-self:start}
+
 .wa-flotante{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;background:var(--cobalto);display:grid;place-items:center;box-shadow:0 8px 22px rgba(15,30,51,.3);z-index:20;border:1px solid rgba(184,148,91,.55)}
 .wa-flotante svg{width:24px;height:24px;fill:var(--porcelana)}
 .wa-flotante:hover{background:var(--pizarra)}
@@ -262,6 +270,7 @@ p{margin:0}
             <a class="btn btn-bronce" href="#diagnostico">Pedí un diagnóstico sin costo</a>
             <a class="btn btn-linea" href="#servicios">Ver qué hacemos</a>
           </div>
+          <a class="atajo-test" href="test/">¿Poco tiempo? <b>Hacé el test de presencia digital</b>: 5 preguntas, 1 minuto →</a>
         </div>
         <svg class="circulos" viewBox="-4 0 72 64" aria-hidden="true">
           <line class="eje" x1="-4" y1="32" x2="68" y2="32" stroke="#B8945B" stroke-width=".25"></line>
@@ -410,6 +419,10 @@ p{margin:0}
           <li>Comparación con las empresas que aparecen primero en tu rubro</li>
           <li>Cómo te ve un comprador o contratista que te busca por primera vez</li>
         </ul>
+        <div class="test-caja">
+          <p>¿Querés una primera idea ahora? Respondé 5 preguntas y mirá al instante tu puntaje y qué te está frenando.</p>
+          <a class="btn btn-linea" href="test/">Hacer el test de presencia digital</a>
+        </div>
         <dl class="contacto">
           <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5492617165352" target="_blank" rel="noopener"><b>+54 9 261 716-5352</b></a><button class="copiar" type="button" data-copiar="+54 9 261 716-5352">Copiar</button></dd></div>
           <div><dt>Correo</dt><dd><a href="mailto:contacto@estudioalinea.com.ar"><b>contacto@estudioalinea.com.ar</b></a><button class="copiar" type="button" data-copiar="contacto@estudioalinea.com.ar">Copiar</button></dd></div>

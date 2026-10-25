@@ -123,8 +123,9 @@ main{flex:1;padding-block:28px 56px}
 .candado h2{font-family:var(--f-display);font-weight:500;font-size:1.75rem;line-height:1.12}
 .candado h2 em{color:var(--bronce)}
 .candado > p{color:var(--pergamino);font-size:.95rem;font-weight:300}
-.borroso{display:grid;gap:8px;filter:blur(5px);opacity:.55;user-select:none;pointer-events:none}
-.borroso div{height:12px;background:var(--pergamino);border-radius:2px}
+.tapado{position:relative;user-select:none;pointer-events:none;max-height:230px;overflow:hidden}
+.tapado .tarjeta{filter:blur(16px);opacity:.7}
+.tapado .sello{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--medianoche);color:var(--porcelana);font-size:.82rem;font-weight:600;letter-spacing:.04em;padding:10px 16px;border-radius:2px;white-space:nowrap;box-shadow:0 8px 22px rgba(15,30,51,.25)}
 .campos{display:grid;gap:14px}
 .campo{display:grid;gap:6px}
 .campo label{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--pergamino)}
@@ -466,13 +467,12 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
     var opcRubro = RUBROS.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("");
     mostrar(
       '<section class="pantalla">' +
-        '<div><p class="etiqueta">Tu resultado</p><h1 class="titulo-bloque" style="font-size:2rem;margin-top:6px">Tu carta de presentación digital</h1></div>' +
-        tarjetaPuntaje() +
+        '<div><p class="etiqueta">Tu resultado está listo</p><h1 class="titulo-bloque" style="font-size:2rem;margin-top:6px">Tu carta de presentación digital</h1></div>' +
+        '<div class="tapado" aria-hidden="true">' + tarjetaPuntaje() + '<span class="sello">Completá tus datos para verlo</span></div>' +
         '<form class="candado" id="form" novalidate>' +
-          '<p class="etiqueta">Tus 3 puntos más flojos</p>' +
-          '<h2>Mirá qué te está frenando <em>y cómo se resuelve</em></h2>' +
-          '<div class="borroso" aria-hidden="true"><div style="width:90%"></div><div style="width:70%"></div><div style="width:82%"></div></div>' +
-          '<p>Dejanos tus datos para ver tu resultado completo. Desde Estudio Alinea te enviamos tu informe por WhatsApp.</p>' +
+          '<p class="etiqueta">Un último paso</p>' +
+          '<h2>Mirá tu puntaje, qué te está frenando <em>y cómo se resuelve</em></h2>' +
+          '<p>Dejanos tus datos para ver tu resultado. Desde Estudio Alinea te enviamos tu informe por WhatsApp.</p>' +
           '<div class="campos">' +
             campo("nombre", "Tu nombre", '<input id="nombre" name="nombre" autocomplete="given-name" required>') +
             campo("cargo", "Tu cargo", '<select id="cargo" name="cargo" required><option value="">Elegí una opción</option>' + opcCargo + '</select>') +
@@ -482,13 +482,12 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
           '</div>' +
           '<label class="consentimiento"><input type="checkbox" id="acepto" required><span>Acepto que Estudio Alinea guarde estos datos para mandarme mi resultado y contactarme por WhatsApp. No se comparten con nadie y podés pedir que los borremos cuando quieras.</span></label>' +
           '<p class="err" id="err-acepto" hidden style="font-size:.78rem;color:#F0A898;font-weight:500">Marcá la casilla para continuar.</p>' +
-          '<button class="btn btn-bronce" type="submit">Ver mi resultado completo</button>' +
+          '<button class="btn btn-bronce" type="submit" id="ver">Ver mi resultado</button>' +
           '<p class="nota">Sin costo y sin compromiso.</p>' +
         '</form>' +
         '<button class="volver" id="rehacer">← Cambiar mis respuestas</button>' +
       '</section>'
     );
-    animar();
     document.getElementById("rehacer").onclick = function () { estado.paso = 0; pregunta(); };
     document.getElementById("form").onsubmit = enviar;
   }
@@ -534,8 +533,9 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
       whatsapp: f.elements.whatsapp.value.trim(),
       wa: normalizarWA(f.elements.whatsapp.value)
     };
-    guardar();
-    completo();
+    var boton = document.getElementById("ver");
+    boton.disabled = true; boton.textContent = "Calculando tu resultado…";
+    guardar(completo);
   }
 
   // Mensaje armado para que Pamela le escriba a la persona (va a la planilla).
@@ -549,8 +549,11 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
       "Eso tiene solución y nos podemos encargar nosotros. Te mando tu informe completo. ¿Te parece si te llamo un ratito esta semana y te cuento cómo lo resolveríamos? Saludos!";
   }
 
-  function guardar() {
-    if (!ENDPOINT) return;
+  // Guarda la fila y después muestra el resultado (espera la respuesta, con un tope de 4 s).
+  function guardar(listo) {
+    var hecho = false;
+    function seguir() { if (!hecho) { hecho = true; listo(); } }
+    if (!ENDPOINT) return seguir();
     var d = estado.datos, v = puntaje();
     var fila = {
       nombre: d.nombre, cargo: d.cargo, empresa: d.empresa, rubro: d.rubro,
@@ -560,10 +563,16 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
     };
     PREGUNTAS.forEach(function (q, i) { fila["p" + (i + 1)] = q.opciones[estado.respuestas[i]][0]; });
     var body = new URLSearchParams(fila);
+    // Primero fetch; si el navegador no lo permite o falla, sendBeacon (nunca los dos: no duplica filas).
+    function beacon() {
+      try { if (navigator.sendBeacon) navigator.sendBeacon(ENDPOINT, body); } catch (e) { /* sin guardado */ }
+      seguir();
+    }
+    setTimeout(seguir, 4000);
     try {
-      if (navigator.sendBeacon) navigator.sendBeacon(ENDPOINT, body);
-      else fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body, keepalive: true });
-    } catch (err) { /* el test sigue aunque falle el guardado */ }
+      if (!window.fetch) return beacon();
+      fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body, keepalive: true }).then(seguir, beacon);
+    } catch (err) { beacon(); }
   }
 
   /* ---------- Resultado completo ---------- */

@@ -538,18 +538,21 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
     guardar(completo);
   }
 
-  // Mensaje armado para que Pamela le escriba a la persona (va a la planilla).
+  // Mensaje armado que Estudio Alinea le manda a la persona por WhatsApp (va a la planilla).
+  // Opción A elegida por Pame (25/10): habla la marca, no Pamela; cierre "Aguardamos tu respuesta. Saludos!"
   function mensajeParaLead() {
     var d = estado.datos, v = puntaje(), h = hallazgo(flojas()[0]);
     var nombre = d.nombre.split(" ")[0];
     var punto = h ? h[0].charAt(0).toLowerCase() + h[0].slice(1).replace(/\.$/, "") : "";
-    return "Hola " + nombre + ", ¿cómo estás? Pamela te habla, de Estudio Alinea. " +
-      "Gracias por hacer el Test de presencia digital: " + d.empresa + " sacó " + v + "/100. " +
-      (punto ? "Lo que más te está frenando hoy: " + punto + ". " : "") +
-      "Eso tiene solución y nos podemos encargar nosotros. Te mando tu informe completo. ¿Te parece si te llamo un ratito esta semana y te cuento cómo lo resolveríamos? Saludos!";
+    return "Hola " + nombre + ", ¿cómo estás? Te escribimos de Estudio Alinea. " +
+      "Gracias por hacer el Test de presencia digital: " + d.empresa + " obtuvo " + v + "/100. " +
+      (punto
+        ? "El punto más flojo hoy es que " + punto + ". Es algo que se resuelve, y nos podemos encargar nosotros. " +
+          "Si te sirve, coordinamos una llamada breve para mostrarte cómo lo haríamos. "
+        : "La presencia digital de la empresa está bien encaminada. Si te sirve, coordinamos una llamada breve para mostrarte cómo sacarle más provecho. ") +
+      "Aguardamos tu respuesta. Saludos!";
   }
 
-  // Guarda la fila y después muestra el resultado (espera la respuesta, con un tope de 4 s).
   function guardar(listo) {
     var hecho = false;
     function seguir() { if (!hecho) { hecho = true; listo(); } }

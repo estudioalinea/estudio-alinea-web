@@ -383,7 +383,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
           '<ul class="datos-rapidos"><li><b>5</b><span>preguntas</span></li><li><b>1</b><span>minuto</span></li><li><b>$0</b><span>sin costo</span></li></ul>' +
         '</div>' +
         '<button class="btn btn-bronce" id="empezar">Empezar el test</button>' +
-        '<p class="para-quien">Para empresas técnicas, industriales y constructoras. Lo puede hacer el dueño, un socio, la gerencia o quien lleve la parte comercial. Se responde de memoria, sin buscar nada.</p>' +
+        '<p class="para-quien">Para empresas técnicas, industriales y constructoras. Lo puede hacer el dueño, un socio, la gerencia o quien lleve la parte comercial. Se responde de memoria y desde el navegador, sin descargar nada.</p>' +
       '</section>'
     );
     document.getElementById("empezar").onclick = function () { estado.paso = 0; pregunta(); };
@@ -463,8 +463,6 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
 
   /* ---------- Resultado con pedido de datos ---------- */
   function resultado() {
-    var opcCargo = CARGOS.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("");
-    var opcRubro = RUBROS.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("");
     mostrar(
       '<section class="pantalla">' +
         '<div><p class="etiqueta">Tu resultado está listo</p><h1 class="titulo-bloque" style="font-size:2rem;margin-top:6px">Tu carta de presentación digital</h1></div>' +
@@ -472,18 +470,14 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
         '<form class="candado" id="form" novalidate>' +
           '<p class="etiqueta">Un último paso</p>' +
           '<h2>Mirá tu puntaje, qué te está frenando <em>y cómo se resuelve</em></h2>' +
-          '<p>Dejanos tus datos para ver tu resultado. Desde Estudio Alinea te enviamos tu informe por WhatsApp.</p>' +
+          '<p>Dejanos tu nombre, tu empresa y tu WhatsApp para ver tu resultado. También te lo enviamos por WhatsApp.</p>' +
           '<div class="campos">' +
             campo("nombre", "Tu nombre", '<input id="nombre" name="nombre" autocomplete="given-name" required>') +
-            campo("cargo", "Tu cargo", '<select id="cargo" name="cargo" required><option value="">Elegí una opción</option>' + opcCargo + '</select>') +
             campo("empresa", "Empresa", '<input id="empresa" name="empresa" autocomplete="organization" required>') +
-            campo("rubro", "Rubro", '<select id="rubro" name="rubro" required><option value="">Elegí una opción</option>' + opcRubro + '</select>') +
-            campo("whatsapp", "WhatsApp (con característica)", '<input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 261 555 1234" required>') +
+            campo("whatsapp", "Tu WhatsApp (con característica)", '<input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 261 555 1234" required>') +
           '</div>' +
-          '<label class="consentimiento"><input type="checkbox" id="acepto" required><span>Acepto que Estudio Alinea guarde estos datos para mandarme mi resultado y contactarme por WhatsApp. No se comparten con nadie y podés pedir que los borremos cuando quieras.</span></label>' +
-          '<p class="err" id="err-acepto" hidden style="font-size:.78rem;color:#F0A898;font-weight:500">Marcá la casilla para continuar.</p>' +
           '<button class="btn btn-bronce" type="submit" id="ver">Ver mi resultado</button>' +
-          '<p class="nota">Sin costo y sin compromiso.</p>' +
+          '<p class="nota">Sin costo. Al ver tu resultado, aceptás que Estudio Alinea guarde estos datos para enviártelo y contactarte por WhatsApp. Son solo para eso: no se comparten con nadie.</p>' +
         '</form>' +
         '<button class="volver" id="rehacer">← Cambiar mis respuestas</button>' +
       '</section>'
@@ -511,7 +505,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
   function enviar(e) {
     e.preventDefault();
     var f = e.target, ok = true;
-    ["nombre", "cargo", "empresa", "rubro", "whatsapp"].forEach(function (id) {
+    ["nombre", "empresa", "whatsapp"].forEach(function (id) {
       var el = f.elements[id], msg = "";
       if (!el.value.trim()) msg = "Completá este dato.";
       else if (id === "whatsapp" && !normalizarWA(el.value)) msg = "Revisá el número: característica + número, sin 0 ni 15.";
@@ -520,16 +514,13 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
       el.setAttribute("aria-invalid", msg ? "true" : "false");
       if (msg && ok) { el.focus(); ok = false; }
     });
-    var acepto = document.getElementById("acepto");
-    document.getElementById("err-acepto").hidden = acepto.checked;
-    if (!acepto.checked) ok = false;
     if (!ok) return;
 
     estado.datos = {
       nombre: f.elements.nombre.value.trim(),
-      cargo: f.elements.cargo.value,
+      cargo: "",
       empresa: f.elements.empresa.value.trim(),
-      rubro: f.elements.rubro.value,
+      rubro: "",
       whatsapp: f.elements.whatsapp.value.trim(),
       wa: normalizarWA(f.elements.whatsapp.value)
     };
@@ -592,7 +583,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
     }).join("");
     var hayNoSe = estado.respuestas.some(function (_, i) { return esNoSe(i); });
     var nombres = idx.map(function (i) { return PREGUNTAS[i].corto; }).join(", ");
-    var msg = "Hola, soy " + d.nombre + " (" + d.cargo + ") de " + d.empresa + ". Hice el Test de presencia digital y me dio " + v + "/100. Me interesa que me ayuden con: " + nombres + ".";
+    var msg = "Hola, soy " + d.nombre + ", de " + d.empresa + ". Hice el Test de presencia digital y me dio " + v + "/100. Me interesa que me ayuden con: " + nombres + ".";
     var fecha = new Date().toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" });
     var nombreCorto = esc(d.nombre.split(" ")[0]);
     mostrar(

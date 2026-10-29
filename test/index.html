@@ -79,6 +79,11 @@ main{flex:1;padding-block:28px 56px}
 .datos-rapidos b{font-family:var(--f-display);font-weight:500;font-size:1.6rem;line-height:1;color:var(--porcelana)}
 .datos-rapidos span{font-size:.74rem;color:var(--pergamino)}
 .para-quien{font-size:.9rem;color:var(--tinta-suave)}
+.form-inicio{display:grid;gap:14px;padding-top:18px;border-top:1px solid var(--linea-osc)}
+.form-inicio > p{color:var(--porcelana);font-size:.95rem}
+.form-inicio .nota{color:var(--pergamino);font-size:.76rem;opacity:.85}
+.saludo{font-size:.95rem;font-weight:600;color:var(--bronce-texto)}
+.calculando{min-height:40vh;align-content:center;text-align:center}
 
 /* Preguntas */
 .progreso{display:grid;gap:8px}
@@ -123,9 +128,6 @@ main{flex:1;padding-block:28px 56px}
 .candado h2{font-family:var(--f-display);font-weight:500;font-size:1.75rem;line-height:1.12}
 .candado h2 em{color:var(--bronce)}
 .candado > p{color:var(--pergamino);font-size:.95rem;font-weight:300}
-.tapado{position:relative;user-select:none;pointer-events:none;max-height:230px;overflow:hidden}
-.tapado .tarjeta{filter:blur(16px);opacity:.7}
-.tapado .sello{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--medianoche);color:var(--porcelana);font-size:.82rem;font-weight:600;letter-spacing:.04em;padding:10px 16px;border-radius:2px;white-space:nowrap;box-shadow:0 8px 22px rgba(15,30,51,.25)}
 .campos{display:grid;gap:14px}
 .campo{display:grid;gap:6px}
 .campo label{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--pergamino)}
@@ -336,7 +338,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
   var app = document.getElementById("app");
   var params = new URLSearchParams(location.search);
   var origen = params.get("origen") || params.get("utm_source") || "web";
-  var estado = { paso: -1, respuestas: [], datos: null };
+  var estado = { paso: -1, respuestas: [], datos: null, id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8) };
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function color(v) { return v <= 40 ? "rojo" : v <= 70 ? "amarillo" : "verde"; }
@@ -373,6 +375,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
 
   /* ---------- Portada ---------- */
   function portada() {
+    var d = estado.datos || {};
     mostrar(
       '<section class="pantalla">' +
         '<div class="intro">' +
@@ -381,12 +384,21 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
           '<h1>¿Cómo ve tu empresa un cliente <em>antes de llamarte?</em></h1>' +
           '<p>Respondé 5 preguntas y mirá al instante tu puntaje, qué te está frenando y cómo se resuelve.</p>' +
           '<ul class="datos-rapidos"><li><b>5</b><span>preguntas</span></li><li><b>1</b><span>minuto</span></li><li><b>$0</b><span>sin costo</span></li></ul>' +
+          '<form class="form-inicio" id="form" novalidate>' +
+            '<p>Para empezar, contanos quién sos. Así armamos tu resultado personalizado y te lo enviamos por WhatsApp.</p>' +
+            '<div class="campos">' +
+              campo("nombre", "Tu nombre", '<input id="nombre" name="nombre" autocomplete="given-name" required value="' + esc(d.nombre || "") + '">') +
+              campo("empresa", "Empresa", '<input id="empresa" name="empresa" autocomplete="organization" required value="' + esc(d.empresa || "") + '">') +
+              campo("whatsapp", "Tu WhatsApp (con característica)", '<input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 261 555 1234" required value="' + esc(d.whatsapp || "") + '">') +
+            '</div>' +
+            '<button class="btn btn-bronce" type="submit">Empezar el test</button>' +
+            '<p class="nota">Sin costo. Al empezar, aceptás que Estudio Alinea guarde estos datos para enviarte tu resultado y contactarte por WhatsApp. Son solo para eso: no se comparten con nadie.</p>' +
+          '</form>' +
         '</div>' +
-        '<button class="btn btn-bronce" id="empezar">Empezar el test</button>' +
         '<p class="para-quien">Para empresas técnicas, industriales y constructoras. Lo puede hacer el dueño, un socio, la gerencia o quien lleve la parte comercial. Se responde de memoria y desde el navegador, sin descargar nada.</p>' +
       '</section>'
     );
-    document.getElementById("empezar").onclick = function () { estado.paso = 0; pregunta(); };
+    document.getElementById("form").onsubmit = enviar;
   }
 
   /* ---------- Preguntas ---------- */
@@ -399,6 +411,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
       '<section class="pantalla pregunta">' +
         '<div class="progreso"><div class="fila"><span>Pregunta ' + (i + 1) + ' de ' + total + '</span><span>' + esc(q.area) + '</span></div>' +
         '<div class="pista"><div class="relleno" style="width:' + (i / total * 100) + '%"></div></div></div>' +
+        (i === 0 && estado.datos ? '<p class="saludo">Hola, ' + esc(estado.datos.nombre.split(" ")[0]) + '. Arrancamos.</p>' : '') +
         '<h2>' + esc(q.texto) + '</h2>' +
         '<div class="opciones" role="group" aria-label="Respuestas">' + ops + '</div>' +
         '<button class="volver" id="volver">← ' + (i === 0 ? 'Volver al inicio' : 'Pregunta anterior') + '</button>' +
@@ -410,7 +423,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
         estado.respuestas[i] = +b.dataset.k;
         app.querySelectorAll(".opcion").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
         setTimeout(function () {
-          if (i < total - 1) { estado.paso++; pregunta(); } else { resultado(); }
+          if (i < total - 1) { estado.paso++; pregunta(); } else { finalizar(); }
         }, 220);
       };
     });
@@ -462,28 +475,10 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
   }
 
   /* ---------- Resultado con pedido de datos ---------- */
-  function resultado() {
-    mostrar(
-      '<section class="pantalla">' +
-        '<div><p class="etiqueta">Tu resultado está listo</p><h1 class="titulo-bloque" style="font-size:2rem;margin-top:6px">Tu carta de presentación digital</h1></div>' +
-        '<div class="tapado" aria-hidden="true">' + tarjetaPuntaje() + '<span class="sello">Completá tus datos para verlo</span></div>' +
-        '<form class="candado" id="form" novalidate>' +
-          '<p class="etiqueta">Un último paso</p>' +
-          '<h2>Mirá tu puntaje, qué te está frenando <em>y cómo se resuelve</em></h2>' +
-          '<p>Dejanos tu nombre, tu empresa y tu WhatsApp para ver tu resultado. También te lo enviamos por WhatsApp.</p>' +
-          '<div class="campos">' +
-            campo("nombre", "Tu nombre", '<input id="nombre" name="nombre" autocomplete="given-name" required>') +
-            campo("empresa", "Empresa", '<input id="empresa" name="empresa" autocomplete="organization" required>') +
-            campo("whatsapp", "Tu WhatsApp (con característica)", '<input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 261 555 1234" required>') +
-          '</div>' +
-          '<button class="btn btn-bronce" type="submit" id="ver">Ver mi resultado</button>' +
-          '<p class="nota">Sin costo. Al ver tu resultado, aceptás que Estudio Alinea guarde estos datos para enviártelo y contactarte por WhatsApp. Son solo para eso: no se comparten con nadie.</p>' +
-        '</form>' +
-        '<button class="volver" id="rehacer">← Cambiar mis respuestas</button>' +
-      '</section>'
-    );
-    document.getElementById("rehacer").onclick = function () { estado.paso = 0; pregunta(); };
-    document.getElementById("form").onsubmit = enviar;
+  // Al terminar: guarda las respuestas (misma fila que al empezar) y muestra el resultado completo.
+  function finalizar() {
+    mostrar('<section class="pantalla calculando"><p class="etiqueta">Tu resultado</p><h1 class="titulo-bloque">Calculando tu resultado…</h1></section>');
+    guardar("fin", completo);
   }
   function campo(id, label, control) {
     return '<div class="campo"><label for="' + id + '">' + label + '</label>' + control + '<span class="err" id="err-' + id + '" hidden></span></div>';
@@ -524,9 +519,8 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
       whatsapp: f.elements.whatsapp.value.trim(),
       wa: normalizarWA(f.elements.whatsapp.value)
     };
-    var boton = document.getElementById("ver");
-    boton.disabled = true; boton.textContent = "Calculando tu resultado…";
-    guardar(completo);
+    guardar("inicio", function () {});
+    estado.paso = 0; pregunta();
   }
 
   // Mensaje armado que Estudio Alinea le manda a la persona por WhatsApp (va a la planilla).
@@ -544,18 +538,23 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
       "Aguardamos tu respuesta. Saludos!";
   }
 
-  function guardar(listo) {
+  // etapa "inicio": guarda el contacto apenas empieza. etapa "fin": completa esa misma fila (mismo id).
+  function guardar(etapa, listo) {
     var hecho = false;
     function seguir() { if (!hecho) { hecho = true; listo(); } }
     if (!ENDPOINT) return seguir();
-    var d = estado.datos, v = puntaje();
+    var d = estado.datos;
     var fila = {
-      nombre: d.nombre, cargo: d.cargo, empresa: d.empresa, rubro: d.rubro,
-      whatsapp: d.whatsapp, wa: d.wa, puntaje: v, nivel: nivel(v),
-      flojos: flojas().map(function (i) { return PREGUNTAS[i].corto; }).join(", "),
-      mensaje: mensajeParaLead(), origen: origen
+      id: estado.id, etapa: etapa, nombre: d.nombre, cargo: d.cargo, empresa: d.empresa, rubro: d.rubro,
+      whatsapp: d.whatsapp, wa: d.wa, origen: origen
     };
-    PREGUNTAS.forEach(function (q, i) { fila["p" + (i + 1)] = q.opciones[estado.respuestas[i]][0]; });
+    if (etapa === "fin") {
+      var v = puntaje();
+      fila.puntaje = v; fila.nivel = nivel(v);
+      fila.flojos = flojas().map(function (i) { return PREGUNTAS[i].corto; }).join(", ");
+      fila.mensaje = mensajeParaLead();
+      PREGUNTAS.forEach(function (q, i) { fila["p" + (i + 1)] = q.opciones[estado.respuestas[i]][0]; });
+    }
     var body = new URLSearchParams(fila);
     // Primero fetch; si el navegador no lo permite o falla, sendBeacon (nunca los dos: no duplica filas).
     function beacon() {

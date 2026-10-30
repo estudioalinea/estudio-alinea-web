@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Página no encontrada | Estudio Alinea</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2C3649">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=EB+Garamond:ital,wght@0,500;1,500&family=Comfortaa:wght@700&display=swap">
+<script src="/medicion.js" defer></script>
+<style>
+/* Una sola pantalla pizarra: los tres círculos de la marca, el mensaje y dos salidas. */
+:root{
+  --pizarra:#2C3649; --medianoche:#0F1E33; --cobalto:#2E4A67; --bronce:#B8945B; --bronce-claro:#C9A56C;
+  --pergamino:#D8CEBE; --porcelana:#F4F0E8;
+  --f-sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-display:"EB Garamond",Georgia,"Times New Roman",serif;
+  --f-iso:"Comfortaa","Montserrat",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--pizarra);color:var(--porcelana);font-family:var(--f-sans);line-height:1.6;-webkit-font-smoothing:antialiased;display:grid;place-items:center;padding:clamp(24px,6vw,64px) 16px}
+main{max-width:560px;display:grid;gap:22px;justify-items:start}
+.logo{display:inline-flex;align-items:baseline;gap:.28em;font-size:1.2rem;letter-spacing:-.02em;line-height:1;text-decoration:none;color:var(--pergamino)}
+.logo .l1{font-weight:300}.logo .l2{font-weight:700}
+.logo .a{font-family:var(--f-iso);font-weight:700;color:var(--bronce);font-size:1.04em;letter-spacing:0}
+svg{width:140px;max-width:100%;height:auto}
+.etiqueta{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--bronce);margin:0}
+h1{font-family:var(--f-display);font-weight:500;font-size:clamp(2.2rem,6vw,3.2rem);line-height:1.05;margin:0;text-wrap:balance}
+h1 em{color:var(--bronce)}
+p{margin:0;color:var(--pergamino);font-weight:300;max-width:46ch}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;font-weight:600;font-size:.92rem;text-decoration:none;border-radius:2px;border:1px solid transparent}
+.btn-bronce{background:var(--bronce);color:var(--medianoche)}
+.btn-bronce:hover{background:var(--bronce-claro)}
+.btn-linea{border-color:rgba(216,206,190,.45);color:var(--porcelana)}
+.btn-linea:hover{border-color:var(--bronce);color:var(--bronce)}
+a:focus-visible{outline:2px solid var(--bronce);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <a class="logo" href="/" aria-label="Estudio Alinea, inicio"><span class="l1">estudio</span><span class="l2"><span class="a">a</span>linea</span></a>
+  <svg viewBox="-4 0 72 64" aria-hidden="true">
+    <line x1="-4" y1="32" x2="68" y2="32" stroke="#B8945B" stroke-width=".4"></line>
+    <circle cx="30" cy="32" r="30" fill="#0F1E33"></circle>
+    <circle cx="38" cy="32" r="22" fill="#2E4A67"></circle>
+    <circle cx="46" cy="32" r="14" fill="#B8945B"></circle>
+  </svg>
+  <p class="etiqueta">Error 404</p>
+  <h1>Esta página <em>no está acá</em></h1>
+  <p>Puede que el enlace haya cambiado o tenga un error de tipeo. Desde estas dos opciones seguís en camino.</p>
+  <div class="acciones">
+    <a class="btn btn-bronce" href="/">Ir a la página principal</a>
+    <a class="btn btn-linea" href="/test/?origen=404">Hacer el test de presencia digital</a>
+  </div>
+</main>
+</body>
+</html>

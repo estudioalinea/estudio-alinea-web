@@ -10,7 +10,14 @@
 <meta property="og:title" content="Test de presencia digital | Estudio Alinea">
 <meta property="og:description" content="¿Cómo ve tu empresa un cliente antes de llamarte? 5 preguntas, 1 minuto, sin costo.">
 <meta property="og:url" content="https://estudioalinea.com.ar/test/">
+<meta property="og:image" content="https://estudioalinea.com.ar/og-test.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Test de presencia digital: ¿cómo ve tu empresa un cliente antes de llamarte?">
+<meta property="og:site_name" content="Estudio Alinea">
 <meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="../medicion.js" defer></script>
 <meta name="theme-color" content="#2C3649">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -211,7 +218,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
 <footer class="pie">
   <div class="envoltura">
     <span>Mendoza · Argentina · © 2026 Estudio Alinea</span>
-    <span><a href="../">estudioalinea.com.ar</a> · <a href="https://www.instagram.com/estudioalinea.digital/" target="_blank" rel="noopener">Instagram</a></span>
+    <span><a href="../">estudioalinea.com.ar</a> · <a href="https://www.instagram.com/estudioalinea.digital/" target="_blank" rel="noopener">Instagram</a> · <a href="../privacidad/">Política de privacidad</a></span>
   </div>
 </footer>
 
@@ -340,6 +347,8 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
   var origen = params.get("origen") || params.get("utm_source") || "web";
   var estado = { paso: -1, respuestas: [], datos: null, id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8) };
 
+  // Medición (medicion.js): si no cargó, el test sigue igual.
+  function evento(nombre, datos) { try { if (window.alineaEvento) window.alineaEvento(nombre, datos); } catch (e) {} }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function color(v) { return v <= 40 ? "rojo" : v <= 70 ? "amarillo" : "verde"; }
   function nivel(v) { return v <= 40 ? "Por arrancar" : v <= 70 ? "En marcha" : "Sólida"; }
@@ -392,7 +401,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
               campo("whatsapp", "Tu WhatsApp (con característica)", '<input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 261 555 1234" required value="' + esc(d.whatsapp || "") + '">') +
             '</div>' +
             '<button class="btn btn-bronce" type="submit">Empezar el test</button>' +
-            '<p class="nota">Sin costo. Al empezar, aceptás que Estudio Alinea guarde estos datos para enviarte tu resultado y contactarte por WhatsApp. Son solo para eso: no se comparten con nadie.</p>' +
+            '<p class="nota">Sin costo. Al empezar, aceptás que Estudio Alinea guarde estos datos para enviarte tu resultado y contactarte por WhatsApp. Son solo para eso: no se comparten con nadie. <a href="../privacidad/" target="_blank" rel="noopener">Política de privacidad</a>.</p>' +
           '</form>' +
         '</div>' +
         '<p class="para-quien">Para empresas técnicas, industriales y constructoras. Lo puede hacer el dueño, un socio, la gerencia o quien lleve la parte comercial. Se responde de memoria y desde el navegador, sin descargar nada.</p>' +
@@ -520,6 +529,7 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
       wa: normalizarWA(f.elements.whatsapp.value)
     };
     guardar("inicio", function () {});
+    evento("test_inicio");
     estado.paso = 0; pregunta();
   }
 
@@ -606,8 +616,10 @@ body.modo-pdf .pdf-pie{margin-top:10px;padding-top:10px;border-top:1px solid var
       '</section>'
     );
     animar();
+    evento("test_completo", { puntaje: v, nivel: nivel(v) });
     document.getElementById("pdf").onclick = function () {
       var boton = this, texto = boton.textContent;
+      evento("descarga_pdf");
       // Las barras y el medidor tienen que estar completos antes de generar el PDF.
       app.querySelectorAll(".barras .relleno").forEach(function (b) { b.style.transition = "none"; b.style.width = b.dataset.w + "%"; });
       var a = app.querySelector(".arco-valor"); if (a) { a.style.transition = "none"; a.style.strokeDashoffset = a.dataset.final; }

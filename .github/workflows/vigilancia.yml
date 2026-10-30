@@ -1,0 +1,45 @@
+# Vigila estudioalinea.com.ar cada hora. Si algo falla, GitHub manda un correo a la cuenta
+# estudioalinea (estudioalinea@gmail.com) con el detalle.
+# Revisa: que la landing, el test y la privacidad respondan; que el certificado HTTPS tenga
+# más de 14 días de vigencia; y que el dominio .com.ar tenga más de 45 días antes de vencer.
+name: Vigilancia del sitio
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  vigilar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Páginas en línea
+        run: |
+          set -u
+          falla=0
+          for url in https://estudioalinea.com.ar/ https://estudioalinea.com.ar/test/ https://estudioalinea.com.ar/privacidad/; do
+            codigo=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 --retry 2 --retry-delay 10 "$url")
+            echo "$url -> $codigo"
+            [ "$codigo" = "200" ] || { echo "::error::$url respondió $codigo"; falla=1; }
+          done
+          exit $falla
+
+      - name: Certificado HTTPS
+        run: |
+          vence=$(echo | openssl s_client -servername estudioalinea.com.ar -connect estudioalinea.com.ar:443 2>/dev/null | openssl x509 -noout -enddate | cut -d= -f2)
+          dias=$(( ($(date -d "$vence" +%s) - $(date +%s)) / 86400 ))
+          echo "El certificado vence: $vence ($dias días)"
+          [ "$dias" -gt 14 ] || { echo "::error::El certificado HTTPS vence en $dias días"; exit 1; }
+
+      - name: Vencimiento del dominio
+        run: |
+          sudo apt-get install -y -qq whois >/dev/null 2>&1 || true
+          vence=$(whois -h whois.nic.ar estudioalinea.com.ar | awk '/^expire:/{print $2; exit}')
+          if [ -z "$vence" ]; then echo "::warning::No se pudo leer la fecha de vencimiento en NIC Argentina"; exit 0; fi
+          dias=$(( ($(date -d "$vence" +%s) - $(date +%s)) / 86400 ))
+          echo "El dominio vence: $vence ($dias días)"
+          [ "$dias" -gt 45 ] || { echo "::error::El dominio estudioalinea.com.ar vence en $dias días: renovarlo en nic.ar"; exit 1; }

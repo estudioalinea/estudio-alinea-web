@@ -84,8 +84,7 @@ p{margin:0}
 .portada-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .portada h1{font-family:var(--f-display);font-weight:500;font-size:clamp(2.7rem,6.6vw,5.4rem);line-height:1.02;letter-spacing:-.015em;margin-top:22px;color:var(--porcelana)}
 .portada h1 em{font-style:italic;color:var(--bronce)}
-.lema{display:flex;align-items:center;gap:14px;margin-top:28px;font-size:clamp(1rem,1.6vw,1.12rem);font-weight:500;color:var(--porcelana)}
-.lema::before{content:"";width:48px;height:2px;background:var(--bronce);flex:none}
+.lema{margin-top:20px;font-family:var(--f-display);font-style:italic;font-weight:500;font-size:clamp(1.35rem,2.4vw,1.7rem);line-height:1.3;color:var(--pergamino);text-wrap:balance}
 .portada .texto{color:var(--pergamino);max-width:48ch;margin-top:18px;font-weight:300}
 .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 
@@ -97,8 +96,8 @@ p{margin:0}
 @keyframes alinear3{from{transform:translateX(-16px)}to{transform:none}}
 @keyframes trazar{from{opacity:0}to{opacity:1}}
 
-.ficha{list-style:none;margin:clamp(56px,8vw,96px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--linea-osc)}
-.ficha li{padding:26px 28px 34px 0;display:grid;gap:4px;align-content:start}
+.ficha{list-style:none;margin:clamp(56px,8vw,96px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.ficha li{padding:0 28px 8px 0;display:grid;gap:4px;align-content:start}
 .ficha li + li{padding-left:28px;border-left:1px solid var(--linea-osc)}
 .ficha strong{font-size:.95rem;font-weight:600;color:var(--porcelana)}
 .ficha span{font-size:.86rem;color:var(--pergamino);font-weight:300}
@@ -107,6 +106,7 @@ p{margin:0}
   .circulos{max-width:240px;justify-self:start;order:-1}
   .ficha{grid-template-columns:1fr}
   .ficha li,.ficha li + li{padding:18px 0;border-left:0}
+  .ficha li:first-child{padding-top:0}
   .ficha li + li{border-top:1px solid var(--linea-osc)}
 }
 
@@ -120,13 +120,11 @@ p{margin:0}
 .lista{list-style:none;margin:0;padding:0;display:grid}
 .lista li{padding-block:18px;border-bottom:1px solid var(--linea);display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;font-size:1.02rem}
 .lista li:first-child{border-top:1px solid var(--linea)}
-.lista li::before{content:"";width:14px;height:2px;background:var(--bronce);margin-top:.8em}
+.lista li::before{content:"";width:9px;height:9px;border-radius:50%;border:1.5px solid var(--bronce);margin-top:.55em}
 .dato{background:var(--medianoche);color:var(--porcelana);padding:clamp(28px,4vw,40px);display:grid;gap:14px;position:relative;overflow:hidden}
-.dato::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(184,148,91,.35)}
-.dato .cifra{font-family:var(--f-display);font-size:clamp(4rem,9vw,6rem);font-weight:500;line-height:.9;letter-spacing:-.02em;font-variant-numeric:lining-nums tabular-nums;color:var(--bronce)}
-.dato .cifra small{font-family:var(--f-sans);font-size:.24em;font-weight:300;color:var(--pergamino);letter-spacing:.02em;margin-left:6px}
+.dato .alivio{font-family:var(--f-display);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.1;color:var(--porcelana);text-wrap:balance}
 .dato p{color:var(--pergamino);font-size:.96rem}
-.dato .fuente{font-size:.7rem;letter-spacing:.12em;color:var(--bronce);text-transform:uppercase;font-weight:500;padding-top:14px;border-top:1px solid var(--linea-osc)}
+.dato .btn{justify-self:start;margin-top:6px;position:relative;z-index:1}
 @media (max-width:860px){.dolores{grid-template-columns:1fr}}
 
 .oportunidad{background:var(--arena)}
@@ -233,14 +231,15 @@ p{margin:0}
 .pie a:hover{color:var(--bronce)}
 .pie .enlaces a{overflow-wrap:anywhere}
 .pie .envoltura.pie-inferior{padding-block:22px 28px;border-top:1px solid var(--linea-osc);font-size:.8rem}
+@media (max-width:760px){.pie .envoltura.pie-inferior{padding-bottom:96px}}
 .pie-inferior p{max-width:70ch}
 .pie-inferior b{font-weight:600;color:var(--porcelana);user-select:all;overflow-wrap:anywhere}
 .pie-etq{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--bronce);margin-right:8px}
 
 /* Atajo al test de presencia digital */
-.atajo-test{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:.92rem;font-weight:500;color:var(--pergamino);text-decoration:none;border-bottom:1px solid rgba(184,148,91,.55);padding-bottom:4px}
-.atajo-test b{color:var(--bronce);font-weight:600}
-.atajo-test:hover{color:var(--porcelana);border-color:var(--bronce)}
+.test-portada{max-width:46ch;background:rgba(244,240,232,.04)}
+.test-caja p b{color:var(--porcelana);font-weight:600}
+@media (max-width:520px){.test-caja .btn{justify-self:stretch}}
 .test-caja{margin-top:28px;padding:18px 20px;border:1px solid rgba(184,148,91,.45);display:grid;gap:10px}
 .test-caja p{color:var(--pergamino);font-size:.92rem;font-weight:300}
 .test-caja .btn{justify-self:start}
@@ -275,9 +274,11 @@ p{margin:0}
           <p class="texto">Minería, petróleo y gas, energía, industria, construcción y servicios técnicos. Trabajamos para que tu empresa se vea sólida donde la buscan clientes y compradores: Google, LinkedIn, redes y tu web.</p>
           <div class="acciones">
             <a class="btn btn-bronce" href="#diagnostico">Pedí un diagnóstico sin costo</a>
-            <a class="btn btn-linea" href="#servicios">Ver qué hacemos</a>
           </div>
-          <a class="atajo-test" href="test/">¿Poco tiempo? <b>Hacé el test de presencia digital</b>: 5 preguntas, 1 minuto →</a>
+          <div class="test-caja test-portada">
+            <p><b>¿Querés una primera idea ahora?</b> Respondé 5 preguntas y mirá al instante tu puntaje y qué te está frenando.</p>
+            <a class="btn btn-linea" href="test/?origen=web-portada">Hacer el test de presencia digital</a>
+          </div>
         </div>
         <svg class="circulos" viewBox="-4 0 72 64" aria-hidden="true">
           <line class="eje" x1="-4" y1="32" x2="68" y2="32" stroke="#B8945B" stroke-width=".25"></line>
@@ -290,7 +291,7 @@ p{margin:0}
       <ul class="ficha" aria-label="En resumen">
         <li><strong>Solo empresas técnicas e industriales</strong><span>Hablamos el idioma de tu rubro.</span></li>
         <li><strong>Indicadores desde el primer mes</strong><span>Consultas, reseñas y presupuestos, medidos.</span></li>
-        <li><strong>Sin promesas de cifras</strong><span>Lo que se promete, se puede comprobar.</span></li>
+        <li><strong>Resultados que se pueden comprobar</strong><span>Cada avance, medido y a la vista.</span></li>
       </ul>
     </div>
   </section>
@@ -298,20 +299,23 @@ p{margin:0}
   <section class="seccion">
     <div class="envoltura">
       <div class="cabeza">
-        <p class="etiqueta">El problema</p>
+        <p class="etiqueta">Lo que escuchamos</p>
         <h2>Hacés bien tu trabajo. <em>¿Se nota cuando te buscan?</em></h2>
+        <p>Es lo que más nos cuentan en las reuniones con empresas técnicas e industriales. ¿Te suena alguna?</p>
       </div>
       <div class="dolores">
         <ul class="lista">
-          <li>La ficha de Google tiene pocas reseñas, o la empresa no tiene web.</li>
-          <li>Empresas con menos trayectoria aparecen primero.</li>
-          <li>Las consultas llegan por varios canales y algunas se responden tarde o se pierden.</li>
-          <li>Nadie sabe con certeza de dónde llegan los clientes ni cuántas consultas terminan en presupuesto.</li>
+          <li>Sabés que tenés que mostrar mejor tu empresa, pero el día a día no te deja tiempo.</li>
+          <li>Querés una buena presencia digital y no sabés a quién encargársela.</li>
+          <li>Querés trabajar para minería o Vaca Muerta y no tenés cómo presentar lo que hacés.</li>
+          <li>Vas a eventos del sector y no tenés una presentación para dejar o mandar después.</li>
+          <li>Estás certificando normas y ordenando procesos para crecer, y te das cuenta de que esa trayectoria no se ve en internet.</li>
+          <li>Trabajás por licitaciones o por contactos y, con los años, el perfil profesional de la empresa quedó de lado: no hay una web ni un LinkedIn que muestren lo que hacés.</li>
         </ul>
-        <aside class="dato" aria-label="Dato del relevamiento">
-          <p class="cifra">11<small>de 18</small></p>
-          <p>instaladoras solares que relevamos tienen menos de 10 reseñas en Google. Cinco no muestran web en su ficha. Es un rubro de ejemplo; el patrón se repite en otros.</p>
-          <p class="fuente">Relevamiento propio en Google Maps · Octubre de 2026</p>
+        <aside class="dato">
+          <p class="alivio">De todo esto nos encargamos nosotros.</p>
+          <p>Vos seguís con tu trabajo. Nosotros armamos tu carta de presentación digital y te mostramos cómo avanza.</p>
+          <a class="btn btn-bronce" href="#diagnostico">Pedí un diagnóstico sin costo</a>
         </aside>
       </div>
     </div>
@@ -336,7 +340,7 @@ p{margin:0}
           <ul class="prepara">
             <li><h3>Presentación de capacidades</h3><p>Web y dossier con servicios, equipos, obras realizadas, certificaciones y referencias, ordenados como los revisa un área de compras.</p></li>
             <li><h3>LinkedIn de la empresa y de quienes la representan</h3><p>El canal donde se mueven compradores, ingenieros y contratistas. Perfiles completos y publicaciones sobre trabajos reales.</p></li>
-            <li><h3>Material para rondas de negocios y registros de proveedores</h3><p>Presentación, ficha técnica y mensajes coherentes en todos los canales, listos para cuando te los pidan.</p></li>
+            <li><h3>Material para eventos y reuniones comerciales</h3><p>Presentación, ficha técnica y mensajes coherentes en todos los canales, listos para cuando te los pidan.</p></li>
           </ul>
           <p class="aclaracion">No gestionamos contratos ni intermediamos con operadoras. Preparamos tu empresa para que, cuando llegue la oportunidad, se vea a la altura de lo que sabe hacer.</p>
         </div>
@@ -368,7 +372,7 @@ p{margin:0}
       </div>
       <ol class="etapas">
         <li><span class="paso">ETAPA 1</span><h3>Diagnóstico de presencia digital</h3><span class="gratis">Sin costo</span><p>Revisión de tu ficha de Google, redes, web y reputación, con un informe de lo que funciona y lo que falta.</p></li>
-        <li><span class="paso">ETAPA 2</span><h3>Redes sociales</h3><p>Instagram como vidriera de obras y proyectos. LinkedIn para llegar a empresas, contratistas y responsables de compras.</p></li>
+        <li><span class="paso">ETAPA 2</span><h3>Redes sociales</h3><p>Instagram para mostrar obras y proyectos. LinkedIn para llegar a empresas, contratistas y responsables de compras.</p></li>
         <li><span class="paso">ETAPA 3</span><h3>Google y Maps</h3><p>Ficha completa, reseñas y posicionamiento para aparecer en búsquedas locales de tu rubro.</p></li>
         <li><span class="paso">ETAPA 4</span><h3>Web</h3><p>Clara, rápida y preparada para buscadores e inteligencia artificial, con servicios, capacidades y certificaciones explicados como los busca tu cliente.</p></li>
         <li><span class="paso">ETAPA 5</span><h3>Automatización</h3><p>Respuesta inicial de consultas, seguimiento de presupuestos y organización de contactos.</p></li>
@@ -385,7 +389,7 @@ p{margin:0}
       <div class="principios">
         <div><h3>Línea base antes de empezar</h3><p>Registramos cuántas consultas, reseñas y presupuestos tenés hoy. Sin ese punto de partida no se puede saber si algo mejoró.</p></div>
         <div><h3>Indicadores acordados</h3><p>Definimos qué vamos a medir con quien lleve el tema en tu empresa: dueños, socios, gerencia o la persona del equipo a cargo. Lo revisamos cada mes, con un informe claro.</p></div>
-        <div><h3>Sin promesas de ventas</h3><p>El cierre depende también de tu atención y tu posventa. Lo que sí garantizamos es medir y mostrarte qué funciona.</p></div>
+        <div><h3>Te mostramos qué funciona</h3><p>El cierre de cada venta depende también de tu atención y tu posventa. Nuestro compromiso es medir cada acción y mostrarte qué da resultado.</p></div>
       </div>
       <div class="rubros" aria-label="Rubros con los que trabajamos">
         <span class="etiqueta">Con quién trabajamos</span>
@@ -428,7 +432,7 @@ p{margin:0}
         </ul>
         <div class="test-caja">
           <p>¿Querés una primera idea ahora? Respondé 5 preguntas y mirá al instante tu puntaje y qué te está frenando.</p>
-          <a class="btn btn-linea" href="test/">Hacer el test de presencia digital</a>
+          <a class="btn btn-linea" href="test/?origen=web-diagnostico">Hacer el test de presencia digital</a>
         </div>
         <dl class="contacto">
           <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5492617165352" target="_blank" rel="noopener"><b>+54 9 261 716-5352</b></a><button class="copiar" type="button" data-copiar="+54 9 261 716-5352">Copiar</button></dd></div>

@@ -4,7 +4,7 @@
    (?interno=0 lo vuelve a activar). */
 (function () {
   var GA_ID = "G-0E0R9H864J";     // Google Analytics 4, formato G-XXXXXXXXXX
-  var PIXEL_ID = "";  // Meta Pixel, solo números
+  var PIXEL_ID = "1167470875842406";  // Meta Pixel, solo números
 
   var params = new URLSearchParams(location.search);
   var origen = params.get("origen") || params.get("utm_source") || "";

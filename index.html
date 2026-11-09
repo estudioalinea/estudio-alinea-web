@@ -168,17 +168,18 @@ p{margin:0}
 
 /* Etapas sobre una línea */
 .etapas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px;position:relative}
-.etapas::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:var(--pergamino)}
-.etapas li{position:relative;display:grid;gap:10px;align-content:start;padding-top:40px}
-.etapas li::before{content:"";position:absolute;left:0;top:0;width:19px;height:19px;border-radius:50%;background:var(--porcelana);border:2px solid var(--cobalto)}
-.etapas li:first-child::before{background:var(--bronce);border-color:var(--bronce)}
+.etapas::before{content:"";position:absolute;left:0;right:0;top:22px;height:1px;background:var(--pergamino)}
+.etapas li{position:relative;display:grid;gap:10px;align-content:start;padding-top:62px}
+.ico-etapa{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:var(--porcelana);border:1.5px solid var(--cobalto);color:var(--cobalto);display:grid;place-items:center}
+.ico-etapa svg{width:22px;height:22px}
+.etapas li:first-child .ico-etapa{background:var(--bronce);border-color:var(--bronce);color:var(--medianoche)}
 .etapas .paso{font-size:.7rem;font-weight:600;color:var(--bronce-texto);letter-spacing:.16em;font-variant-numeric:tabular-nums}
 .etapas p{color:var(--tinta-suave);font-size:.92rem;line-height:1.6}
 .gratis{justify-self:start;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--medianoche);background:var(--pergamino);padding:3px 9px}
 @media (max-width:980px){
   .etapas{grid-template-columns:1fr;gap:0}
-  .etapas::before{left:9px;right:auto;top:10px;bottom:10px;width:1px;height:auto}
-  .etapas li{padding:0 0 32px 44px}
+  .etapas::before{left:22px;right:auto;top:22px;bottom:40px;width:1px;height:auto}
+  .etapas li{padding:8px 0 32px 64px;min-height:76px}
 }
 
 .abanico-titulo{font-family:var(--f-display);font-weight:500;font-size:clamp(1.5rem,2.6vw,1.9rem);margin:56px 0 24px}
@@ -189,11 +190,13 @@ p{margin:0}
 @media (max-width:860px){.principios{grid-template-columns:1fr}}
 .rubros-bloque{margin-top:56px;display:grid;gap:16px}
 .rubros-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.rubro-card{display:grid;gap:6px;align-content:start;padding:20px;background:var(--porcelana);border:1px solid var(--linea);text-decoration:none;color:var(--tinta);transition:border-color .2s}
+.rubro-card{display:flex;flex-direction:column;gap:6px;padding:20px;background:var(--porcelana);border:1px solid var(--linea);text-decoration:none;color:var(--tinta);transition:border-color .2s}
 .rubro-card:hover{border-color:var(--bronce)}
 .rubro-card h3{font-size:1rem}
+.rubro-ico{width:40px;height:40px;color:var(--bronce-texto);margin-bottom:4px}
+.rubro-ico svg{width:100%;height:100%}
 .rubro-card p{margin:0;font-size:.88rem;color:var(--tinta-suave);line-height:1.5}
-.rubro-card .ver{margin-top:6px;font-size:.84rem;font-weight:600;color:var(--bronce-texto);text-decoration:underline;text-decoration-color:var(--bronce);text-underline-offset:3px}
+.rubro-card .ver{margin-top:auto;padding-top:8px;align-self:flex-start;font-size:.84rem;font-weight:600;color:var(--bronce-texto);text-decoration:underline;text-decoration-color:var(--bronce);text-underline-offset:3px}
 .rubros-tambien{margin:0;font-size:.92rem;color:var(--tinta-suave)}
 @media (max-width:860px){.rubros-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:420px){.rubro-card{padding:16px}}
@@ -427,11 +430,11 @@ a.rubro:hover{border-color:var(--bronce)}
         <p>Se empieza por el diagnóstico y se suma cada etapa cuando la anterior está funcionando.</p>
       </div>
       <ol class="etapas">
-        <li><span class="paso">ETAPA 1</span><h3>Diagnóstico de presencia digital</h3><span class="gratis">Sin costo</span><p>Revisión de tu ficha de Google, redes, web y reputación, con un informe de lo que funciona y lo que falta.</p></li>
-        <li><span class="paso">ETAPA 2</span><h3>Redes sociales</h3><p>Instagram para mostrar obras y proyectos. LinkedIn para llegar a empresas, contratistas y responsables de compras.</p></li>
-        <li><span class="paso">ETAPA 3</span><h3>Google y Maps</h3><p>Ficha completa, reseñas y posicionamiento para aparecer en búsquedas locales de tu rubro.</p></li>
-        <li><span class="paso">ETAPA 4</span><h3>Web</h3><p>Clara, rápida y preparada para buscadores e inteligencia artificial, con servicios, capacidades y certificaciones explicados como los busca tu cliente.</p></li>
-        <li><span class="paso">ETAPA 5</span><h3>Automatización con IA</h3><p>En una charla de diagnóstico detectamos qué tareas te frenan cada día y las agilizamos con inteligencia artificial: documentación y vencimientos, presupuestos y consultas. La IA prepara y una persona de tu equipo revisa.</p></li>
+        <li><span class="ico-etapa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></svg></span><span class="paso">ETAPA 1</span><h3>Diagnóstico de presencia digital</h3><span class="gratis">Sin costo</span><p>Revisión de tu ficha de Google, redes, web y reputación, con un informe de lo que funciona y lo que falta.</p></li>
+        <li><span class="ico-etapa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9.5L5 19v-4H4z"/></svg></span><span class="paso">ETAPA 2</span><h3>Redes sociales</h3><p>Instagram para mostrar obras y proyectos. LinkedIn para llegar a empresas, contratistas y responsables de compras.</p></li>
+        <li><span class="ico-etapa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.6-6-10.5a6 6 0 0 1 12 0C18 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/></svg></span><span class="paso">ETAPA 3</span><h3>Google y Maps</h3><p>Ficha completa, reseñas y posicionamiento para aparecer en búsquedas locales de tu rubro.</p></li>
+        <li><span class="ico-etapa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="1"/><path d="M9 20h6M12 16.5V20"/></svg></span><span class="paso">ETAPA 4</span><h3>Web</h3><p>Clara, rápida y preparada para buscadores e inteligencia artificial, con servicios, capacidades y certificaciones explicados como los busca tu cliente.</p></li>
+        <li><span class="ico-etapa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/></svg></span><span class="paso">ETAPA 5</span><h3>Automatización con IA</h3><p>En una charla de diagnóstico detectamos qué tareas te frenan cada día y las agilizamos con inteligencia artificial: documentación y vencimientos, presupuestos y consultas. La IA prepara y una persona de tu equipo revisa.</p></li>
       </ol>
       <h3 class="abanico-titulo">También hacemos</h3>
       <div class="principios abanico">
@@ -456,10 +459,10 @@ a.rubro:hover{border-color:var(--bronce)}
       <div class="rubros-bloque" aria-label="Rubros con los que trabajamos">
         <p class="etiqueta">Con quién trabajamos</p>
         <div class="rubros-grid">
-          <a class="rubro-card" href="marketing-industrial/"><h3>Industria y metalurgia</h3><p>Metalúrgicas, talleres, ingeniería y servicios técnicos.</p><span class="ver">Ver más</span></a>
-          <a class="rubro-card" href="marketing-mineria/"><h3>Minería</h3><p>Empresas que le prestan servicios a la minería.</p><span class="ver">Ver más</span></a>
-          <a class="rubro-card" href="marketing-oil-and-gas/"><h3>Petróleo y gas</h3><p>Servicios para operadoras y contratistas de toda la Argentina.</p><span class="ver">Ver más</span></a>
-          <a class="rubro-card" href="marketing-constructoras/"><h3>Construcción</h3><p>Constructoras y empresas de obra pública y privada.</p><span class="ver">Ver más</span></a>
+          <a class="rubro-card" href="marketing-industrial/"><span class="rubro-ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><circle cx="12" cy="12" r="6"/><path stroke-width="2.6" stroke-linecap="butt" d="M12 3.4v2.6M12 18v2.6M3.4 12h2.6M18 12h2.6M5.9 5.9l1.8 1.8M16.3 16.3l1.8 1.8M5.9 18.1l1.8-1.8M16.3 7.7l1.8-1.8"/></svg></span><h3>Industria y metalurgia</h3><p>Metalúrgicas, talleres, ingeniería y servicios técnicos.</p><span class="ver">Ver más</span></a>
+          <a class="rubro-card" href="marketing-mineria/"><span class="rubro-ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5V15a7.5 7.5 0 0 1 15 0v1.5"/><path d="M2.5 16.5h19"/><path d="M9.5 8.2c.6 1.9.9 4.3.9 6.8M14.5 8.2c-.6 1.9-.9 4.3-.9 6.8"/><rect x="10.4" y="10.2" width="3.2" height="2.6" rx=".8"/></svg></span><h3>Minería</h3><p>Empresas del rubro minero y empresas que prestan servicios a la minería.</p><span class="ver">Ver más</span></a>
+          <a class="rubro-card" href="marketing-oil-and-gas/"><span class="rubro-ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21L12 3l4 18"/><path d="M5 21h14"/><path d="M9.3 15.5h5.4M10.5 10h3"/><path d="M9.3 15.5l4.2-5.5M14.7 15.5l-4.2-5.5"/></svg></span><h3>Petróleo y gas</h3><p>Servicios para operadoras y contratistas de toda la Argentina.</p><span class="ver">Ver más</span></a>
+          <a class="rubro-card" href="marketing-constructoras/"><span class="rubro-ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V4"/><path d="M4 21h6"/><path d="M7 5h13"/><path d="M7 9l4-4"/><path d="M17 5v5"/><path d="M17 10v2a1.6 1.6 0 1 1-1.6 1.6"/></svg></span><h3>Construcción</h3><p>Constructoras y empresas de obra pública y privada.</p><span class="ver">Ver más</span></a>
         </div>
         <p class="rubros-tambien">También trabajamos con empresas de energía e instalaciones.</p>
       </div>

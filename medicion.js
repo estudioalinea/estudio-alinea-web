@@ -20,7 +20,8 @@
     test_inicio: ["track", "Lead"],
     test_completo: ["trackCustom", "TestCompleto"],
     clic_whatsapp: ["track", "Contact"],
-    clic_correo: ["track", "Contact"]
+    clic_correo: ["track", "Contact"],
+    clic_agenda: ["track", "Schedule"]
   };
 
   window.alineaEvento = function (nombre, datos) {
@@ -62,6 +63,7 @@
     var href = a.getAttribute("href"), lugar = a.id || a.className || "enlace";
     if (/wa\.me|api\.whatsapp\.com/.test(href)) window.alineaEvento("clic_whatsapp", { lugar: lugar });
     else if (/^mailto:/.test(href)) window.alineaEvento("clic_correo", { lugar: lugar });
+    else if (/cal\.com\/estudioalinea/.test(href)) window.alineaEvento("clic_agenda", { lugar: lugar });
     else if (/instagram\.com/.test(href)) window.alineaEvento("clic_instagram", { lugar: lugar });
     else if (/(^|\/)test\/?(\?|$)/.test(href) && !/\/test\//.test(location.pathname)) window.alineaEvento("clic_test", { lugar: lugar });
   }, true);

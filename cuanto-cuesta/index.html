@@ -374,7 +374,7 @@ main{flex:1;padding-block:28px 56px}
 
     var resp = PREGUNTAS.map(function (q) { var o = q.o.filter(function (x) { return x[0] === r[q.k]; })[0]; return o ? o[1] : ""; });
     guardar("fin", { vende: resp[0], web: resp[1], ficha: resp[2], dossier: resp[3], marca: resp[4],
-      servicios: nombres.join(", ") + " · Redes: " + resp[5] + (ofrecerRedes ? " (vio el servicio de redes)" : ""), total: total, descuento: pct, depto: grande ? "Sí" : "No" });
+      servicios: (nombres.length ? nombres.join(", ") + " · " : "") + "Redes: " + resp[5] + (ofrecerRedes ? " (vio el servicio de redes)" : ""), total: total, descuento: pct, depto: grande ? "Sí" : "No" });
     evento("cotizador_resultado", { paquete: grande ? "proveedor" : "zona", total: total });
     el('<section class="pantalla">' + hola + depto + (items.length ? puesta + redes : redes + puesta) + auto +
       '<div class="tarjeta"><p class="condiciones">' +

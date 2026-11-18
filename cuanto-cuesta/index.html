@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cuánto cuesta | Estudio Alinea</title>
+<meta name="description" content="Respondé 5 preguntas y mirá qué necesita tu empresa y cuánto cuesta cada servicio.">
+<link rel="canonical" href="https://estudioalinea.com.ar/cuanto-cuesta/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cuánto cuesta | Estudio Alinea">
+<meta property="og:description" content="Respondé 5 preguntas y mirá qué necesita tu empresa y cuánto cuesta cada servicio.">
+<meta property="og:url" content="https://estudioalinea.com.ar/cuanto-cuesta/">
+<meta property="og:image" content="https://estudioalinea.com.ar/og-estudio-alinea.png">
+<meta property="og:site_name" content="Estudio Alinea">
+<meta property="og:locale" content="es_AR">
+<script src="../medicion.js" defer></script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2C3649">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,500;1,500&family=Comfortaa:wght@700&display=swap">
+<style>
+[hidden]{display:none!important}
+:root{
+  --pizarra:#2C3649; --medianoche:#0F1E33; --cobalto:#2E4A67;
+  --bronce:#B8945B; --bronce-claro:#C9A56C; --bronce-texto:#7E6235;
+  --pergamino:#D8CEBE; --porcelana:#F4F0E8; --blanco:#FBF9F5;
+  --tinta:#0F1E33; --tinta-suave:#46526A; --linea:#DDD5C7; --linea-osc:rgba(216,206,190,.16);
+  --verde:#5B8A5E; --pista:#E4DCCF;
+  --f-sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-display:"EB Garamond",Georgia,"Times New Roman",serif;
+  --f-iso:"Comfortaa","Montserrat",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--porcelana);color:var(--tinta);font-family:var(--f-sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+a{color:inherit} button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--bronce);outline-offset:3px}
+h1,h2,h3{margin:0;text-wrap:balance} p{margin:0}
+.envoltura{width:100%;max-width:640px;margin:0 auto;padding-inline:16px}
+.etiqueta{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--bronce-texto)}
+.barra{background:var(--pizarra)}
+.barra .envoltura{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.logo{display:inline-flex;align-items:baseline;gap:.28em;font-size:1.15rem;letter-spacing:-.02em;line-height:1;text-decoration:none;color:var(--pergamino)}
+.logo .l1{font-weight:300}.logo .l2{font-weight:700}
+.logo .a{font-family:var(--f-iso);font-weight:700;color:var(--bronce);font-size:1.04em;letter-spacing:0}
+.barra small{font-size:.66rem;font-weight:500;letter-spacing:.3em;color:var(--pergamino)}
+main{flex:1;padding-block:28px 56px}
+.pantalla{display:grid;gap:22px;animation:entrar .35s ease-out both}
+@keyframes entrar{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;font-weight:600;font-size:.95rem;text-decoration:none;padding:12px 24px;border-radius:2px;border:1px solid transparent;cursor:pointer;width:100%}
+.btn-bronce{background:var(--bronce);color:var(--medianoche)} .btn-bronce:hover{background:var(--bronce-claro)}
+.btn-linea{background:transparent;border-color:#CFC5B4;color:var(--tinta)} .btn-linea:hover{border-color:var(--cobalto)}
+.volver{justify-self:start;background:none;border:0;padding:8px 0;font-size:.85rem;font-weight:500;color:var(--tinta-suave);cursor:pointer}
+.intro{background:var(--pizarra);color:var(--porcelana);padding:28px 22px;display:grid;gap:16px}
+.intro .etiqueta{color:var(--bronce)}
+.intro h1{font-family:var(--f-display);font-weight:500;font-size:clamp(2.1rem,8vw,2.9rem);line-height:1.04}
+.intro h1 em{color:var(--bronce)}
+.intro p{color:var(--pergamino);font-weight:300}
+.progreso{display:grid;gap:8px}
+.progreso .fila{display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;color:var(--tinta-suave)}
+.progreso .pista{height:4px;background:var(--pista)}
+.progreso .relleno{height:100%;background:var(--bronce);transition:width .3s ease}
+.pregunta h2{font-family:var(--f-display);font-weight:500;font-size:clamp(1.65rem,6.4vw,2.1rem);line-height:1.15}
+.pregunta .ayuda{margin-top:8px;font-size:.92rem;color:var(--tinta-suave)}
+.opciones{display:grid;gap:10px}
+.opcion{display:flex;align-items:center;gap:14px;text-align:left;width:100%;min-height:60px;padding:14px 16px;background:var(--blanco);border:1px solid #CFC5B4;border-radius:2px;cursor:pointer;font-size:.97rem;line-height:1.4}
+.opcion::before{content:"";width:18px;height:18px;border-radius:50%;border:1.5px solid #B9AE9C;flex:none}
+.opcion:hover{border-color:var(--cobalto)}
+.precio{background:var(--medianoche);color:var(--porcelana);padding:26px 22px;display:grid;gap:10px}
+.precio .etiqueta{color:var(--bronce)}
+.precio h2{font-family:var(--f-display);font-weight:500;font-size:1.7rem;line-height:1.12}
+.precio .monto{font-family:var(--f-display);font-weight:500;font-size:clamp(2.2rem,10vw,3.2rem);line-height:1;color:var(--bronce);font-variant-numeric:lining-nums}
+.precio .monto small{font-family:var(--f-sans);font-size:.9rem;font-weight:500;color:var(--pergamino);margin-left:6px}
+.precio .alt{color:var(--pergamino);font-size:.92rem}
+.precio .mensual{border-top:1px solid var(--linea-osc);padding-top:12px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.precio .mensual b{font-family:var(--f-display);font-weight:500;font-size:1.6rem;color:var(--porcelana)}
+.tarjeta{background:var(--blanco);border:1px solid var(--linea);padding:22px 20px;display:grid;gap:14px}
+.titulo-bloque{font-family:var(--f-display);font-weight:500;font-size:1.4rem;line-height:1.15}
+.incluye{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.incluye li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;font-size:.95rem}
+.incluye li::before{content:"";width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--pista);border:2px solid #B9AE9C}
+.incluye li.falta::before{background:var(--bronce);border-color:var(--bronce)}
+.incluye b{display:block;font-weight:600}
+.incluye span{color:var(--tinta-suave);font-size:.88rem}
+.incluye em{font-style:normal;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bronce-texto);margin-left:6px}
+.condiciones{font-size:.85rem;color:var(--tinta-suave);display:grid;gap:4px}
+.acciones{display:grid;gap:10px}
+.otro{font-size:.88rem;color:var(--tinta-suave);text-align:center}
+.elegir{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.elegir button{font:inherit;font-size:.85rem;padding:8px 12px;border:1px solid var(--linea);background:var(--blanco);color:var(--tinta);cursor:pointer;text-align:left}
+.elegir button[aria-pressed="true"]{border-color:var(--bronce);background:var(--porcelana);font-weight:600}
+.depto .etiqueta{color:var(--bronce-texto)}
+.depto .mensual{border-top:1px solid var(--linea);padding-top:12px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.depto .mensual b{white-space:nowrap;font-family:var(--f-display);font-weight:500;font-size:1.6rem;color:var(--tinta)}
+.depto .incluye li::before{background:var(--bronce);border-color:var(--bronce)}
+.form-inicio{display:grid;gap:14px;padding-top:18px;border-top:1px solid var(--linea-osc)}
+.form-inicio > p{color:var(--porcelana);font-size:.95rem}
+.campos{display:grid;gap:14px}
+.campo{display:grid;gap:6px}
+.campo label{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--pergamino)}
+.campo input{width:100%;font:inherit;font-size:16px;color:var(--tinta);background:var(--blanco);border:1px solid #CFC5B4;border-radius:2px;padding:12px 14px;min-height:50px}
+.campo input:focus{border-color:var(--bronce);outline:2px solid rgba(184,148,91,.35);outline-offset:0}
+.campo [aria-invalid="true"]{border-color:#E08A78;outline:2px solid rgba(224,138,120,.35)}
+.campo .err{font-size:.78rem;color:#F0A898;font-weight:500}
+.form-inicio .nota{color:var(--pergamino);font-size:.76rem;opacity:.85}
+.form-inicio .nota a{color:var(--pergamino)}
+.saludo{display:grid;gap:6px}
+.saludo h2{font-family:var(--f-display);font-weight:500;font-size:clamp(1.6rem,6vw,2rem);line-height:1.15}
+.total{border-top:1px solid var(--linea);padding-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.total span{font-size:.85rem;font-weight:600;color:var(--tinta-suave)}
+.total b{font-family:var(--f-display);font-weight:500;font-size:clamp(1.9rem,8vw,2.4rem);line-height:1;color:var(--tinta);white-space:nowrap;font-variant-numeric:lining-nums}
+.total small{font-family:var(--f-sans);font-size:.8rem;font-weight:500;color:var(--tinta-suave)}
+.nota-chica{font-size:.82rem;color:var(--tinta-suave)}
+.depto{border:2px solid var(--bronce);box-shadow:0 10px 30px rgba(15,30,51,.08)}
+.depto .sello{justify-self:start;background:var(--bronce);color:var(--medianoche);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px}
+.depto .total b{color:var(--bronce-texto)}
+.ventajas{background:var(--porcelana);border-left:3px solid var(--bronce);padding:16px 16px 18px;display:grid;gap:12px}
+.ventajas h4,.sub-depto{margin:0;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bronce-texto)}
+.otro button{background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;color:var(--tinta)}
+.pie{background:var(--pizarra);color:var(--pergamino);font-size:.78rem;padding-block:18px;text-align:center}
+</style>
+</head>
+<body>
+<header class="barra">
+  <div class="envoltura">
+    <a class="logo" href="../" aria-label="Estudio Alinea, ir al sitio"><span class="l1">estudio</span><span class="l2"><span class="a">a</span>linea</span></a>
+    <small>MARKETING TÉCNICO</small>
+  </div>
+</header>
+<main><div class="envoltura" id="app" aria-live="polite"></div></main>
+<footer class="pie"><div class="envoltura">Estudio Alinea · Mendoza · Empresas técnicas e industriales de todo el país</div></footer>
+
+<script>
+(function () {
+  var WA_ALINEA = "5492617165352";
+  var TEST = "https://estudioalinea.com.ar/test/?origen=cotizador";
+  var app = document.getElementById("app");
+  var r = {};
+  // Guarda el contacto y el resultado en la planilla de prospectos (Apps Script del test, pestaña "Cotizador").
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbyT4c9wD50kN4VL7G0KkWGAsT3lAPQG7fOL1qIYRDcGrMaY8CZ4HNUctLHWdEraiGZz/exec";
+  var params = new URLSearchParams(location.search);
+  var origen = params.get("origen") || params.get("utm_source") || "web";
+  var datos = null;
+  var id = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  function evento(n, d) { try { if (window.alineaEvento) window.alineaEvento(n, d || {}); } catch (e) {} }
+  function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function campo(k, label, control) {
+    return '<div class="campo"><label for="' + k + '">' + label + '</label>' + control + '<span class="err" id="err-' + k + '" hidden></span></div>';
+  }
+  function normalizarWA(raw) {
+    var d = String(raw).replace(/\D/g, "");
+    if (d.indexOf("00") === 0) d = d.slice(2);
+    if (d.indexOf("54") === 0) d = d.slice(2);
+    if (d.indexOf("9") === 0 && d.length === 11) d = d.slice(1);
+    if (d.indexOf("0") === 0) d = d.slice(1);
+    if (d.length === 12) {
+      for (var n = 2; n <= 4; n++) { if (d.substr(n, 2) === "15") { d = d.slice(0, n) + d.slice(n + 2); break; } }
+    }
+    return d.length === 10 ? "549" + d : "";
+  }
+  function guardar(etapa, extra) {
+    if (!ENDPOINT || !datos) return;
+    var fila = { fuente: "cotizador", id: id, etapa: etapa, nombre: datos.nombre, empresa: datos.empresa,
+      whatsapp: datos.whatsapp, wa: datos.wa, origen: origen };
+    for (var k in (extra || {})) fila[k] = extra[k];
+    var body = new URLSearchParams(fila);
+    try {
+      if (window.fetch) fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body, keepalive: true }).catch(function () {
+        try { if (navigator.sendBeacon) navigator.sendBeacon(ENDPOINT, body); } catch (e) {}
+      });
+      else if (navigator.sendBeacon) navigator.sendBeacon(ENDPOINT, body);
+    } catch (e) {}
+  }
+
+  // Precios vigentes: cerebro/precios.md, lista en pesos del 17/11 (+ ajuste de web, 18/11). Más IVA.
+  var P = {
+    webSimple: 1000000, webCompleta: 1800000, webAjuste: 700000,
+    ficha: 300000, dossier: 400000, dossierInteractivo: 800000, linkedin: 300000,
+    mantenimiento: 200000, depto: 2500000, marca: 600000
+  };
+  var DESC = { 2: 5, 3: 10, 4: 15, 5: 20 }; // descuento por cantidad, solo puesta a punto
+
+  var PREGUNTAS = [
+    { k: "tipo", t: "¿A quién le querés vender?", a: "Según a quién le vendés, te mostramos los servicios que te sirven. El precio de cada servicio es el mismo para todos.",
+      o: [["grande", "A empresas grandes: minería, petróleo, industria u obra. Necesito que me vean como proveedor"],
+          ["chica", "A clientes de mi zona. Necesito que me encuentren cuando buscan lo que hago"]] },
+    { k: "web", t: "¿Tienen una web que muestre lo que hacen?",
+      o: [["no", "No tenemos web"], ["vieja", "Tenemos, pero está vieja o no dice lo que hacemos"], ["si", "Sí, está al día"]] },
+    { k: "ficha", t: "Si alguien busca tu empresa en Google, ¿aparece la ficha completa?",
+      a: "La ficha es el recuadro con el mapa, el teléfono y las opiniones.",
+      o: [["no", "No aparece o no sé"], ["incompleta", "Aparece, pero incompleta"], ["si", "Sí, completa y a nuestro nombre"]] },
+    { k: "dossier", t: "¿Les piden una presentación de la empresa?",
+      a: "Para una licitación, un alta como proveedor o una reunión con un cliente grande.",
+      o: [["si", "Sí, y no tenemos una buena"], ["tenemos", "Sí, y ya tenemos"], ["no", "No nos la piden"]] },
+    { k: "marca", t: "¿Tienen logo y marca bien definidos?",
+      a: "Logo, colores y tipografías que se usen igual en todos lados.",
+      o: [["no", "No, o lo hicimos a las apuradas"], ["vieja", "Tenemos, pero quedó vieja"], ["si", "Sí, y la usamos en todo"]] }
+  ];
+
+  function el(html) { app.innerHTML = html; window.scrollTo(0, 0); }
+  function ars(n) { return "$ " + n.toLocaleString("es-AR"); }
+
+  function portada() {
+    el('<section class="pantalla">' +
+      '<div class="intro"><span class="etiqueta">Cuánto cuesta</span>' +
+      '<h1>El precio, <em>de entrada.</em></h1>' +
+      '<p>Respondé 5 preguntas y te mostramos qué necesita tu empresa y cuánto cuesta cada servicio.</p>' +
+      '<form class="form-inicio" id="form" novalidate>' +
+        '<p>Para empezar, contanos quién sos. Así te mandamos el detalle por WhatsApp.</p>' +
+        '<div class="campos">' +
+          campo("nombre", "Tu nombre", '<input id="nombre" name="nombre" autocomplete="given-name" required>') +
+          campo("empresa", "Empresa", '<input id="empresa" name="empresa" autocomplete="organization" required>') +
+          campo("whatsapp", "Tu WhatsApp (con característica)", '<input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 261 555 1234" required>') +
+        '</div>' +
+        '<button class="btn btn-bronce" type="submit" id="empezar">Ver mi precio</button>' +
+        '<p class="nota">Al empezar, aceptás que Estudio Alinea guarde estos datos para enviarte el detalle y contactarte por WhatsApp. Son solo para eso: no se comparten con nadie. <a href="../privacidad/" target="_blank" rel="noopener">Política de privacidad</a>.</p>' +
+      '</form></div>' +
+      '<p class="otro">¿Preferís saber primero cómo te ven hoy? <a href="' + TEST + '">Hacé el test gratis</a></p>' +
+      '</section>');
+    document.getElementById("form").onsubmit = enviar;
+  }
+
+  function enviar(e) {
+    e.preventDefault();
+    var f = e.target, ok = true;
+    ["nombre", "empresa", "whatsapp"].forEach(function (k) {
+      var c = f.elements[k], msg = "";
+      if (!c.value.trim()) msg = "Completá este dato.";
+      else if (k === "whatsapp" && !normalizarWA(c.value)) msg = "Revisá el número: característica + número, sin 0 ni 15.";
+      var err = document.getElementById("err-" + k);
+      err.hidden = !msg; err.textContent = msg;
+      c.setAttribute("aria-invalid", msg ? "true" : "false");
+      if (msg && ok) { c.focus(); ok = false; }
+    });
+    if (!ok) return;
+    datos = { nombre: f.elements.nombre.value.trim(), empresa: f.elements.empresa.value.trim(),
+      whatsapp: f.elements.whatsapp.value.trim(), wa: normalizarWA(f.elements.whatsapp.value) };
+    guardar("inicio");
+    evento("cotizador_inicio");
+    pregunta(0);
+  }
+
+  function pregunta(i) {
+    var q = PREGUNTAS[i];
+    var ops = q.o.map(function (o) { return '<button class="opcion" data-v="' + o[0] + '">' + o[1] + '</button>'; }).join("");
+    el('<section class="pantalla">' +
+      '<div class="progreso"><div class="fila"><span>Pregunta ' + (i + 1) + ' de ' + PREGUNTAS.length + '</span></div>' +
+      '<div class="pista"><div class="relleno" style="width:' + ((i + 1) / PREGUNTAS.length * 100) + '%"></div></div></div>' +
+      '<div class="pregunta"><h2>' + q.t + '</h2>' + (q.a ? '<p class="ayuda">' + q.a + '</p>' : '') + '</div>' +
+      '<div class="opciones">' + ops + '</div>' +
+      (i > 0 ? '<button class="volver" id="volver">← Volver</button>' : '') +
+      '</section>');
+    app.querySelectorAll(".opcion").forEach(function (b) {
+      b.onclick = function () { r[q.k] = b.dataset.v; i + 1 < PREGUNTAS.length ? pregunta(i + 1) : resultado(); };
+    });
+    var v = document.getElementById("volver"); if (v) v.onclick = function () { pregunta(i - 1); };
+  }
+
+  function beneficio(nombre, detalle) {
+    return '<li><div><b>' + nombre + '</b><span>' + detalle + '</span></div></li>';
+  }
+
+  function item(nombre, detalle, precio, extra) {
+    return '<li class="falta"><div><b>' + nombre + '<em>' + precio + '</em></b><span>' + detalle + '</span>' + (extra || '') + '</div></li>';
+  }
+
+  function resultado() {
+    var grande = r.tipo === "grande";
+    var items = [];
+
+    if (r.web === "no") {
+      items.push(grande
+        ? ["Sitio web completo", "Hasta 6 secciones: servicios, equipos, obras y zona de trabajo, con los textos escritos por nosotros y el pedido de cotización por WhatsApp.", P.webCompleta]
+        : ["Web simple", "Una página clara con lo que hacés, las palabras que usa quien te busca y el pedido de cotización por WhatsApp.", P.webSimple]);
+    } else if (r.web === "vieja") {
+      items.push(["Ajuste de la web que ya tienen", "Ponemos al día textos, servicios y fotos para que diga lo que hacen hoy y aparezca en las búsquedas.", P.webAjuste]);
+    }
+    if (r.ficha !== "si") items.push(["Ficha de Google", "Completa y a nombre de la empresa, con las categorías y los servicios correctos.", P.ficha]);
+    if (r.dossier === "si") {
+      var inter = r.dossierTipo === "interactivo";
+      var elegir = '<div class="elegir" role="group" aria-label="Elegí la presentación">' +
+        '<button data-d="simple" aria-pressed="' + !inter + '">Simple · ' + ars(P.dossier) + '</button>' +
+        '<button data-d="interactivo" aria-pressed="' + inter + '">Interactiva · ' + ars(P.dossierInteractivo) + '</button></div>';
+      items.push([inter ? "Presentación de la empresa interactiva (dossier)" : "Presentación de la empresa simple (dossier)",
+        "Para licitaciones, altas como proveedor y reuniones comerciales. Elegí la versión:",
+        inter ? P.dossierInteractivo : P.dossier, elegir]);
+    }
+    if (r.marca !== "si") items.push(["Branding de la marca", "Logo y versión chica, colores, tipografías y una guía de uso, listos para registrar la marca.", P.marca]);
+    if (grande) items.push(["Página de LinkedIn de la empresa", "Armada para que la vean compradores y responsables de compras.", P.linkedin]);
+
+    var hola = '<div class="saludo"><span class="etiqueta">Tu resultado</span><h2>' + esc(datos.nombre) + ', esto es lo que ' + (grande ? 'te recomendamos' : 'necesita tu empresa') + '</h2></div>';
+    var mantTxt = '<p class="nota-chica">Mantenimiento opcional: ' + ars(P.mantenimiento) + ' + IVA por mes. La web y la ficha al día, Search Console, seguridad, avisos y alertas, y 1 cambio por mes.</p>';
+    var bruto = items.reduce(function (t, x) { return t + x[2]; }, 0);
+    var pct = DESC[items.length] || 0;
+    var total = Math.round(bruto * (100 - pct) / 100 / 1000) * 1000;
+    var nombres = items.map(function (x) { return x[0]; });
+    var lista = items.map(function (x) { return item(x[0], x[1], ars(x[2]), x[3]); }).join("");
+    var resumen = items.length ? nombres.join(", ") + " (" + ars(total) + " + IVA)" : "Mantenimiento de web y ficha (" + ars(P.mantenimiento) + " por mes)";
+    var msg = "Hola, soy " + datos.nombre + " de " + datos.empresa + ". Vi el precio en la web: " + resumen + ". Quiero la propuesta para mi empresa.";
+    function wa(t) { return 'https://wa.me/' + WA_ALINEA + '?text=' + encodeURIComponent(t); }
+
+    var puesta;
+    if (!items.length) {
+      puesta = '<div class="tarjeta"><h3 class="titulo-bloque">Ya tenés lo básico</h3>' +
+        '<p class="condiciones"><span>La web y la ficha están al día. Lo que suma ahora es mantenerlas y que te encuentren por los servicios que hacés.</span></p>' +
+        '<div class="total"><span>Mantenimiento</span><b>' + ars(P.mantenimiento) + '<small> + IVA /mes</small></b></div>' +
+        '<p class="nota-chica">La web y la ficha al día, Search Console, seguridad, avisos y alertas, y 1 cambio por mes.</p>' +
+        '<a class="btn ' + (grande ? 'btn-linea' : 'btn-bronce') + '" target="_blank" rel="noopener" href="' + wa(msg) + '">Quiero el mantenimiento</a></div>';
+    } else {
+      puesta = '<div class="tarjeta">' +
+        (grande ? '<span class="etiqueta">Si preferís arrancar solo con la puesta a punto</span>' : '') +
+        '<h3 class="titulo-bloque">' + (grande ? 'Puesta a punto' : 'Qué incluye') + '</h3><ul class="incluye">' + lista + '</ul>' +
+        '<div class="total"><span>Por única vez</span><b>' + ars(total) + '<small> + IVA</small></b></div>' +
+        (pct ? '<p class="nota-chica">Incluye ' + pct + ' % de descuento por contratar los servicios juntos (sin descuento: ' + ars(bruto) + ').</p>' : '') +
+        mantTxt +
+        '<a class="btn ' + (grande ? 'btn-linea' : 'btn-bronce') + '" target="_blank" rel="noopener" href="' + wa(msg) + '">Quiero la propuesta' + (grande ? ' de la puesta a punto' : '') + '</a></div>';
+    }
+
+    var depto = "";
+    if (grande) {
+      var msgDepto = "Hola, soy " + datos.nombre + " de " + datos.empresa + ". Vi en la web el departamento de marketing externo. Quiero saber cómo funcionaría para mi empresa.";
+      depto = '<div class="tarjeta depto"><span class="sello">Recomendado para tu empresa</span>' +
+        '<h3 class="titulo-bloque">Departamento de marketing externo</h3>' +
+        '<p class="condiciones"><span>Todo el marketing de tu empresa en manos de un equipo especializado en rubros técnicos, sin sumar gente a tu planta.</span></p>' +
+        '<div class="ventajas"><h4>Lo que gana tu empresa</h4><ul class="incluye">' +
+        beneficio("Sin juicios laborales", "Es un servicio, no una relación de empleo: no hay despidos, indemnizaciones ni reclamos.") +
+        beneficio("Todo con factura", "Un solo pago mensual, con factura, sin sueldos, aportes ni cargas sociales.") +
+        beneficio("Sin capacitar a nadie", "Trabajás con un equipo que ya conoce tu rubro desde el primer día.") +
+        beneficio("Sin gastos de un empleado", "Ni viandas, ni ropa, ni puesto de trabajo, ni computadora ni programas a tu cargo.") +
+        beneficio("Sin licencias ni reemplazos", "El trabajo sigue aunque alguien falte o se vaya de vacaciones.") +
+        beneficio("Solo soluciones", "Vos te ocupás de tu empresa y nosotros, de que te vean y te elijan.") +
+        '</ul></div>' +
+        '<h4 class="sub-depto">Qué incluye</h4><ul class="incluye">' +
+        (items.length ? beneficio("Tu puesta a punto completa, incluida", nombres.join(", ") + ". Por separado sale " + ars(total) + " + IVA; acá va sin costo aparte.") : "") +
+        beneficio("Presencia digital constante", "La web y la ficha de Google al día, y tus redes: Instagram, Facebook y LinkedIn.") +
+        beneficio("Publicidad en Meta y Google", "La armamos y la seguimos, con informe de cuánto cuesta cada contacto. La inversión en anuncios va aparte.") +
+        beneficio("Acompañamiento constante", "Plan anual, ferias, licitaciones, presentaciones y consultas por WhatsApp.") +
+        beneficio("Noticias del rubro al día", "Te contamos lo que pasa en tu sector y lo usamos para comunicar.") +
+        beneficio("Una visita por mes y reunión de resultados", "Visita con fotos o videos en el Gran Mendoza; en el resto del país, videollamada.") +
+        '</ul>' +
+        '<div class="total"><span>Por mes</span><b>' + ars(P.depto) + '<small> + IVA</small></b></div>' +
+        '<p class="nota-chica">Contrato mínimo de 6 meses. Incluye la puesta a punto completa y el branding de la marca, sin costo aparte.</p>' +
+        '<a class="btn btn-bronce" target="_blank" rel="noopener" href="' + wa(msgDepto) + '">Quiero el departamento de marketing</a></div>';
+    }
+
+    var resp = PREGUNTAS.map(function (q) { var o = q.o.filter(function (x) { return x[0] === r[q.k]; })[0]; return o ? o[1] : ""; });
+    guardar("fin", { vende: resp[0], web: resp[1], ficha: resp[2], dossier: resp[3], marca: resp[4],
+      servicios: nombres.join(", "), total: total, descuento: pct, depto: grande ? "Sí" : "No" });
+    evento("cotizador_resultado", { paquete: grande ? "proveedor" : "zona", total: total });
+    el('<section class="pantalla">' + hola + depto + puesta +
+      '<div class="tarjeta"><p class="condiciones">' +
+      (items.length ? '<span>La puesta a punto se paga en 3 partes: 50 % al arrancar, 30 % con la primera versión y 20 % al entregar todo.</span>' : '') +
+      '<span>Precios en pesos, más IVA. Siempre con factura.</span>' +
+      '<span>Antes de arrancar te armamos sin costo un análisis de cómo te encuentran hoy, comparado con otras empresas del rubro.</span></p></div>' +
+      '<div class="acciones"><a class="btn btn-linea" href="' + TEST + '">Hacé el test gratis</a></div>' +
+      '<p class="otro">¿Te equivocaste en alguna? <button id="otra">Volver a empezar</button></p>' +
+      '</section>');
+    document.getElementById("otra").onclick = function () { r = {}; pregunta(0); };
+    app.querySelectorAll("[data-d]").forEach(function (b) {
+      b.onclick = function () { var y = window.scrollY; r.dossierTipo = b.dataset.d; resultado(); window.scrollTo(0, y); };
+    });
+  }
+
+  portada();
+})();
+</script>
+</body>
+</html>

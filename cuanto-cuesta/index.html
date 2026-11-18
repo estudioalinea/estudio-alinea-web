@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cuánto cuesta | Estudio Alinea</title>
-<meta name="description" content="Respondé 5 preguntas y mirá qué necesita tu empresa y cuánto cuesta cada servicio.">
+<meta name="description" content="Respondé 6 preguntas y mirá qué necesita tu empresa y cuánto cuesta cada servicio.">
 <link rel="canonical" href="https://estudioalinea.com.ar/cuanto-cuesta/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cuánto cuesta | Estudio Alinea">
-<meta property="og:description" content="Respondé 5 preguntas y mirá qué necesita tu empresa y cuánto cuesta cada servicio.">
+<meta property="og:description" content="Respondé 6 preguntas y mirá qué necesita tu empresa y cuánto cuesta cada servicio.">
 <meta property="og:url" content="https://estudioalinea.com.ar/cuanto-cuesta/">
 <meta property="og:image" content="https://estudioalinea.com.ar/og-estudio-alinea.png">
 <meta property="og:site_name" content="Estudio Alinea">
@@ -177,7 +177,7 @@ main{flex:1;padding-block:28px 56px}
   var P = {
     webSimple: 1000000, webCompleta: 1800000, webAjuste: 700000,
     ficha: 300000, dossier: 400000, dossierInteractivo: 800000, linkedin: 300000,
-    mantenimiento: 200000, depto: 2500000, marca: 600000
+    mantenimiento: 200000, depto: 2500000, marca: 600000, redes: 800000, todoJunto: 1000000
   };
   var DESC = { 2: 5, 3: 10, 4: 15, 5: 20 }; // descuento por cantidad, solo puesta a punto
 
@@ -195,7 +195,10 @@ main{flex:1;padding-block:28px 56px}
       o: [["si", "Sí, y no tenemos una buena"], ["tenemos", "Sí, y ya tenemos"], ["no", "No nos la piden"]] },
     { k: "marca", t: "¿Tienen logo y marca bien definidos?",
       a: "Logo, colores y tipografías que se usen igual en todos lados.",
-      o: [["no", "No, o lo hicimos a las apuradas"], ["vieja", "Tenemos, pero quedó vieja"], ["si", "Sí, y la usamos en todo"]] }
+      o: [["no", "No, o lo hicimos a las apuradas"], ["vieja", "Tenemos, pero quedó vieja"], ["si", "Sí, y la usamos en todo"]] },
+    { k: "redes", t: "¿Tienen redes sociales y alguien que las mantenga?",
+      a: "Instagram y Facebook con publicaciones seguidas, que muestren lo que hacen.",
+      o: [["no", "No tenemos redes"], ["nadie", "Tenemos, pero nadie las mantiene al día"], ["si", "Sí, se publica seguido"]] }
   ];
 
   function el(html) { app.innerHTML = html; window.scrollTo(0, 0); }
@@ -205,7 +208,7 @@ main{flex:1;padding-block:28px 56px}
     el('<section class="pantalla">' +
       '<div class="intro"><span class="etiqueta">Cuánto cuesta</span>' +
       '<h1>El precio, <em>de entrada.</em></h1>' +
-      '<p>Respondé 5 preguntas y te mostramos qué necesita tu empresa y cuánto cuesta cada servicio.</p>' +
+      '<p>Respondé 6 preguntas y te mostramos qué necesita tu empresa y cuánto cuesta cada servicio.</p>' +
       '<form class="form-inicio" id="form" novalidate>' +
         '<p>Para empezar, contanos quién sos. Así te mandamos el detalle por WhatsApp.</p>' +
         '<div class="campos">' +
@@ -300,13 +303,31 @@ main{flex:1;padding-block:28px 56px}
     var msg = "Hola, soy " + datos.nombre + " de " + datos.empresa + ". Vi el precio en la web: " + resumen + ". Quiero la propuesta para mi empresa.";
     function wa(t) { return 'https://wa.me/' + WA_ALINEA + '?text=' + encodeURIComponent(t); }
 
+    var redes = "";
+    var ofrecerRedes = !grande && r.redes !== "si";
+    if (ofrecerRedes) {
+      var msgRedes = "Hola, soy " + datos.nombre + " de " + datos.empresa + ". Vi en la web el servicio de redes. Quiero saber cómo funcionaría para mi empresa.";
+      redes = '<div class="tarjeta"><span class="etiqueta">' + (items.length ? 'Para después de la puesta a punto' : 'Lo que te suma ahora') + '</span>' +
+        '<h3 class="titulo-bloque">Tus redes al día, sin ocuparte</h3>' +
+        '<p class="condiciones"><span>' + (r.redes === "no" ? 'Armamos tu Instagram y tu Facebook y los mantenemos activos' : 'Nos ocupamos de tu Instagram y tu Facebook') + ', para que quien te busca vea trabajos recientes y te escriba.</span></p>' +
+        '<h4 class="sub-depto">Qué incluye</h4><ul class="incluye">' +
+        beneficio("Puesta a punto de las redes, incluida", "Perfil, foto, descripción y destacados ordenados, sin costo aparte.") +
+        beneficio("Calendario y publicaciones", "Planificamos el mes, escribimos los textos, diseñamos y dejamos todo programado.") +
+        beneficio("Mirada a la competencia", "Vemos qué publican otras empresas de tu rubro y qué les funciona.") +
+        beneficio("Vos solo mandás el material", "Fotos o videos de tus trabajos: nosotros los convertimos en publicaciones.") +
+        '</ul>' +
+        '<div class="total"><span>Redes, por mes</span><b>' + ars(P.redes) + '<small> + IVA</small></b></div>' +
+        '<p class="nota-chica">Todo junto: redes + web y ficha al día + posicionamiento en Google, ' + ars(P.todoJunto) + ' + IVA por mes. Contrato mínimo de 6 meses para medir resultados.</p>' +
+        '<a class="btn ' + (items.length ? 'btn-linea' : 'btn-bronce') + '" target="_blank" rel="noopener" href="' + wa(msgRedes) + '">Quiero las redes</a></div>';
+    }
+
     var puesta;
     if (!items.length) {
       puesta = '<div class="tarjeta"><h3 class="titulo-bloque">Ya tenés lo básico</h3>' +
         '<p class="condiciones"><span>La web y la ficha están al día. Lo que suma ahora es mantenerlas y que te encuentren por los servicios que hacés.</span></p>' +
         '<div class="total"><span>Mantenimiento</span><b>' + ars(P.mantenimiento) + '<small> + IVA /mes</small></b></div>' +
         '<p class="nota-chica">La web y la ficha al día, Search Console, seguridad, avisos y alertas, y 1 cambio por mes.</p>' +
-        '<a class="btn ' + (grande ? 'btn-linea' : 'btn-bronce') + '" target="_blank" rel="noopener" href="' + wa(msg) + '">Quiero el mantenimiento</a></div>';
+        '<a class="btn ' + (grande || ofrecerRedes ? 'btn-linea' : 'btn-bronce') + '" target="_blank" rel="noopener" href="' + wa(msg) + '">Quiero el mantenimiento</a></div>';
     } else {
       puesta = '<div class="tarjeta">' +
         (grande ? '<span class="etiqueta">Si preferís arrancar solo con la puesta a punto</span>' : '') +
@@ -344,11 +365,18 @@ main{flex:1;padding-block:28px 56px}
         '<a class="btn btn-bronce" target="_blank" rel="noopener" href="' + wa(msgDepto) + '">Quiero el departamento de marketing</a></div>';
     }
 
+    var msgAuto = "Hola, soy " + datos.nombre + " de " + datos.empresa + ". Vi en la web el control de vencimientos con IA. Quiero saber cómo funcionaría para mi empresa.";
+    var auto = '<div class="tarjeta"><span class="etiqueta">Para sumar orden</span>' +
+      '<h3 class="titulo-bloque">Control de vencimientos con IA</h3>' +
+      '<p class="condiciones"><span>Automatizamos con IA el control de los vencimientos: te avisa antes de que venza cada documento, para que nadie de tu equipo se quede afuera de una planta.</span></p>' +
+      '<p class="nota-chica">Se arma a medida, según los documentos y las personas que manejan. Te pasamos el precio después de verlo con vos.</p>' +
+      '<a class="btn btn-linea" target="_blank" rel="noopener" href="' + wa(msgAuto) + '">Quiero saber más</a></div>';
+
     var resp = PREGUNTAS.map(function (q) { var o = q.o.filter(function (x) { return x[0] === r[q.k]; })[0]; return o ? o[1] : ""; });
     guardar("fin", { vende: resp[0], web: resp[1], ficha: resp[2], dossier: resp[3], marca: resp[4],
-      servicios: nombres.join(", "), total: total, descuento: pct, depto: grande ? "Sí" : "No" });
+      servicios: nombres.join(", ") + " · Redes: " + resp[5] + (ofrecerRedes ? " (vio el servicio de redes)" : ""), total: total, descuento: pct, depto: grande ? "Sí" : "No" });
     evento("cotizador_resultado", { paquete: grande ? "proveedor" : "zona", total: total });
-    el('<section class="pantalla">' + hola + depto + puesta +
+    el('<section class="pantalla">' + hola + depto + (items.length ? puesta + redes : redes + puesta) + auto +
       '<div class="tarjeta"><p class="condiciones">' +
       (items.length ? '<span>La puesta a punto se paga en 3 partes: 50 % al arrancar, 30 % con la primera versión y 20 % al entregar todo.</span>' : '') +
       '<span>Precios en pesos, más IVA. Siempre con factura.</span>' +
